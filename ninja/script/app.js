@@ -6,10 +6,12 @@ let hygiene = 100
 let oxygen = 100
 let comfort = 50
 let humor = 75
-let bitcoins = 100
 let min = 25
 let medium = 50
 let max = 75
+let bitcoins = 25
+let data = 1
+
 
 let timer = setInterval(
   function(){
@@ -22,15 +24,19 @@ let timer = setInterval(
     myComfort()
     myEnergy()
     myHygiene()
-  },200
+  },700
 )
 
 
 function myLife() {
   if ((food || water) < min){
-    population -= 1
-  }
+    population -= 1 }
+  if ((comfort || hygiene || energy || oxygen) < min){
+  humor -= 1 }
+  if ((energy || hygiene || oxygen) < min){
+    comfort-1}
 }
+
 
 function myPopulation() {
   document.querySelector('#population').innerHTML = Math.floor(`${population}`)
@@ -80,7 +86,7 @@ function myHumor() {
 
 function myComfort() {
   document.querySelector('#comfort').innerHTML = Math.floor(comfort)
-  comfort -= population/100
+  comfort -= population/200
 
   if ((comfort) < 1){
     comfort = 0
@@ -104,3 +110,24 @@ function myHygiene() {
     hygiene = 0
   }
 }
+
+/* function myBitcoins() {
+  let changeFood = 1
+  let changeWater = 2
+  let choice.addEventListener('click', function()){
+    choice = dataset.value
+    if
+
+  }
+}
+
+*/
+
+
+let moreFood = document.querySelector('.moreFood')
+moreFood.addEventListener(
+  "click",
+  function(){
+    food += 10
+  }
+)
