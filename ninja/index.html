@@ -4,10 +4,21 @@
     <meta charset="utf-8">
     <title>space simulator</title>
     <meta name="description" content="Description de ma page">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
   </head>
   <body>
-    <h1></h1>
+    <p class="absolute"></p>
+    <div class="bitcoins">
+      <svg id="bitcoins" data-name="bitcoin" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path d="M88.1 107.7l-24-21.2c-7.5 8.5-14.5 17.5-20.8 27l26.6 17.8C75.4 123 81.5 115.1 88.1 107.7z" />
+        <path d="M133.1 68.7l-17.6-26.7c-9.5 6.3-18.6 13.1-27.2 20.6l21 24.2C116.9 80.2 124.8 74.1 133.1 68.7z" />
+        <path d="M256 0c-38.4-0.1-76.2 8.5-110.8 25.2l13.9 28.8c30.2-14.6 63.4-22.1 96.9-22 123.7 0 224 100.3 224 224s-100.3 224-224 224 -224-100.3-224-224c-0.1-34.3 7.7-68.1 22.9-98.8l-28.7-14.1C8.9 178.1-0.1 216.8 0 256c0 141.4 114.6 256 256 256s256-114.6 256-256S397.4 0 256 0z"
+        />
+        <path d="M176 336v32h32v48h32v-48h32v48h32v-50.3c34-8.6 54.6-43 46.1-77.1 -3.2-12.7-10.3-24.1-20.2-32.7 26.6-22.8 29.6-62.9 6.8-89.5 -8.5-9.9-20-17-32.7-20.2V96h-32v48h-32v-48h-32v48h-32v32h32v160H176zM240 176h48c17.7 0 32 14.3 32 32s-14.3 32-32 32h-48V176zM240 272h48c17.7 0 32 14.3 32 32 0 17.7-14.3 32-32 32h-48V272z"
+        />
+      </svg>
+    </div>
     <div class="top_menu">
       <div class="item">
         <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -133,10 +144,35 @@
 
       <div class="clearBoth"></div>
 
-      <img class="shipou" src="images/ship.png" alt="spaceship">
+      <div id="slider">
+        <div class="primarySlide">
+          <img class="size_slide" src="images/food.png" alt="Texte alternatif">
+          <h2>Salle d'agriculture</h2>
+        </div>
+        <ul class="slides">
+          <li class="current">
+            <img src="images/food_mini.png" alt="Salle d'agriculture" data-srcBigImg="images/food.png">
+          </li>
+          <li>
+            <img src="images/water_mini.png" alt="Salle d'eau" data-srcBigImg="images/water.png">
+          </li>
+          <li>
+            <img src="images/food_mini.png" alt="Salle d'Oxygen" data-srcBigImg="images/food.png">
+          </li>
+          <li>
+            <img src="images/comfort_mini.png" alt="Salle confort" data-srcBigImg="images/comfort.png">
+          </li>
+          <li>
+            <img src="images/energy_mini.png" alt="Salle d'energie" data-srcBigImg="images/energy.png">
+          </li>
+          <li>
+            <img src="images/energy_mini.png" alt="Salle d'hygiène" data-srcBigImg="images/energy.png">
+          </li>
+        </ul>
+      </div>
 
       <div class="cards">
-        <div class="moreFood">
+        <div class="moreFood animate">
           <svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 672 852">
             <title>food</title>
             <rect x="10" y="10" width="652" height="832" rx="70.82" ry="70.82" style="fill:none;stroke:#77e86f;stroke-miterlimit:10;stroke-width:20px"
@@ -155,7 +191,7 @@
               transform="translate(-346.5 41.5)" style="fill:#77e86f" />
           </svg>
         </div>
-        <div class="moreWater">
+        <div class="moreWater animate">
           <svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 672 852">
             <title>water</title>
             <rect x="10" y="10" width="652" height="832" rx="70.82" ry="70.82" style="fill:none;stroke:#77e86f;stroke-miterlimit:10;stroke-width:20px"
@@ -172,7 +208,7 @@
               transform="translate(-346.5 41.5)" style="fill:#77e86f" />
           </svg>
         </div>
-        <div data-value='3'>
+        <div class="moreOxygen animate">
           <svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 672 852">
             <title>O2</title>
             <rect x="10" y="10" width="652" height="832" rx="70.82" ry="70.82" style="fill:none;stroke:#77e86f;stroke-miterlimit:10;stroke-width:20px"
@@ -187,7 +223,7 @@
               transform="translate(-346.5 41.5)" style="fill:#77e86f" />
           </svg>
         </div>
-        <div data-value='4'>
+        <div class="moreComfort animate">
         <svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 672 852">
           <title>bed</title>
           <rect x="10" y="10" width="652" height="832" rx="70.82" ry="70.82" style="fill:none;stroke:#77e86f;stroke-miterlimit:10;stroke-width:20px"
@@ -201,7 +237,7 @@
           <rect x="128.5" y="577.5" width="184" height="16" style="fill:#77e86f" />
         </svg>
         </div>
-        <div data-value='5'>
+        <div class="moreEnergy animate">
           <svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 672 852">
             <title>energy</title>
             <rect x="10" y="10" width="652" height="832" rx="70.82" ry="70.82" style="fill:none;stroke:#77e86f;stroke-miterlimit:10;stroke-width:20px"
@@ -222,7 +258,7 @@
               transform="translate(-346.5 41.5)" style="fill:#77e86f" />
           </svg>
         </div>
-        <div data-value='6'>
+        <div class="moreHygiene animate">
           <svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 672 852">
             <title>bathroom</title>
             <rect x="10" y="10" width="652" height="832" rx="70.82" ry="70.82" style="fill:none;stroke:#77e86f;stroke-miterlimit:10;stroke-width:20px"

@@ -1,7 +1,21 @@
+@font-face {
+    font-family: 'moonhouseregular';
+    src: url('../moonhouse-webfont.woff2') format('woff2'),
+         url('../moonhouse-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+html{
+  font-size: 62.5%;
+}
+
 body{
   margin: 0;
   background: url("../images/etoiles.jpg") no-repeat;
-  background-size: cover; }
+  background-size: cover;
+  position: relative;
 }
 
 .clearBoth{
@@ -17,7 +31,52 @@ svg{
 p{
   text-align: center;
   color: #77e86f;
+  font-size: 1.5em;
+  font-family: 'Roboto', sans-serif;
 }
+
+p.absolute{
+  position: absolute;
+  top: 250px;
+  left: 500px;
+  color:#77e86f;
+  font-size: 10em;
+  font-family: 'moonhouseregular';
+}
+
+h2{
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.1em;
+  text-align: center;
+}
+
+
+
+#slider{
+  width: 960px;
+  margin: 0 auto;
+}
+
+.slides{
+  list-style: none;
+  text-align: center;
+  padding: 0;
+}
+
+.slides li{
+  display: inline-block;
+  margin: 20px 20px 0px 20px;
+}
+
+.size_slide{
+  width: 500px;
+  display: block;
+  margin: 0 auto;
+}
+
+
 
 
 
@@ -36,24 +95,32 @@ p{
 }
 
 .shipou{
-  width: 400px;
+  width: 200px;
   display: block;
   margin: 0 auto;
-  transform: rotate(90deg);
 }
 
 .cards svg{
   float: left;
   width: 70px;
-  margin-top: 93px;
+  margin-top: 70px;
   padding: 0 30px;
 }
 
   .cards{
   width: 800px;
   margin: 0 auto;
+  cursor: pointer;
 }
 
 .choice{
   background-color: red;
 }
+
+.bitcoins{
+  position: absolute;
+  top: 300px;
+  left: 30px;
+  }
+
+

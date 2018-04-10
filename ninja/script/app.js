@@ -10,8 +10,13 @@ let min = 25
 let medium = 50
 let max = 75
 let bitcoins = 25
-let data = 1
-
+let animate = document.querySelectorAll('.animate')
+let moreFood = document.querySelector('.moreFood')
+let moreWater = document.querySelector('.moreWater')
+let moreOxygen = document.querySelector('.moreOxygen')
+let moreComfort = document.querySelector('.moreComfort')
+let moreEnergy = document.querySelector('.moreEnergy')
+let moreHygiene = document.querySelector('.moreHygiene')
 
 let timer = setInterval(
   function(){
@@ -40,17 +45,23 @@ function myLife() {
 
 function myPopulation() {
   document.querySelector('#population').innerHTML = Math.floor(`${population}`)
-  food -= population/100
 
   if(population < 1){
-    windowlert('perdu')
+    let absolute = document.querySelector('.absolute').innerHTML = "PERDU"
+  } else if((food || water) > 100){
+    population +=1
+  } else if ((food || water) > 150) {
+    console.log("150")
+  } else if ((food || water) > 175) {
+    console.log("175")
+  } else if ((food || water) > 200) {
+    console.log("200")
   }
 
 }
 
 function myFood() {
-  document.querySelector('#food').innerHTML = Math.floor(food)
-  food -= population/100
+  food = document.querySelector('#food').innerHTML = Math.floor(food -= population / 100)
 
   if ((food) < 1){
     food = 0
@@ -58,8 +69,7 @@ function myFood() {
 }
 
 function myWater() {
-  document.querySelector('#water').innerHTML = Math.floor(water)
-  water -= population/100
+  document.querySelector('#water').innerHTML = Math.floor(water -= population / 100)
 
   if ((water) < 1){
     water = 0
@@ -67,8 +77,7 @@ function myWater() {
 }
 
 function myOxygen() {
-  document.querySelector('#oxygen').innerHTML = Math.floor(oxygen)
-  oxygen -= population/100
+  document.querySelector('#oxygen').innerHTML = Math.floor(oxygen -= population / 100)
 
   if ((oxygen) < 1){
     oxygen = 0
@@ -76,8 +85,7 @@ function myOxygen() {
 }
 
 function myHumor() {
-  document.querySelector('#humor').innerHTML = Math.floor(humor)
-  humor -= population/100
+  document.querySelector('#humor').innerHTML = Math.floor(humor -= population / 100)
 
   if ((humor) < 1){
     humor = 0
@@ -85,8 +93,7 @@ function myHumor() {
 }
 
 function myComfort() {
-  document.querySelector('#comfort').innerHTML = Math.floor(comfort)
-  comfort -= population/200
+  document.querySelector('#comfort').innerHTML = Math.floor(comfort -= population / 200)
 
   if ((comfort) < 1){
     comfort = 0
@@ -94,8 +101,7 @@ function myComfort() {
 }
 
 function myEnergy() {
-document.querySelector('#energy').innerHTML = Math.floor(energy)
-energy -= population/100
+  document.querySelector('#energy').innerHTML = Math.floor(energy -= population / 100)
 
 if ((energy) < 1){
   energy = 1
@@ -103,8 +109,7 @@ if ((energy) < 1){
 }
 
 function myHygiene() {
-  hygiene -= population/100
-  document.querySelector('#hygiene').innerHTML = Math.floor(hygiene)
+  document.querySelector('#hygiene').innerHTML = Math.floor(hygiene -= population / 100)
 
   if ((hygiene) < 1){
     hygiene = 0
@@ -124,10 +129,90 @@ function myHygiene() {
 */
 
 
-let moreFood = document.querySelector('.moreFood')
+
 moreFood.addEventListener(
   "click",
   function(){
     food += 10
   }
 )
+
+moreWater.addEventListener(
+  "click",
+  function () {
+    water += 10
+  }
+)
+
+moreOxygen.addEventListener(
+  "click",
+  function () {
+    oxygen += 10
+  }
+)
+
+moreComfort.addEventListener(
+  "click",
+  function () {
+    comfort += 10
+  }
+)
+
+moreEnergy.addEventListener(
+  "click",
+  function () {
+    energy += 10
+  }
+)
+
+moreHygiene.addEventListener(
+  "click",
+  function () {
+    hygiene += 10
+  }
+)
+
+
+for(let i = 0; i < animate.length; i++){
+  animate[i].addEventListener(
+    "click",
+      function(){
+        animate[i].animate([
+          // keyframes
+          { transform: 'translateY(0px)' },
+          { transform: 'translateY(-10px)' }
+        ], {
+            // timing options
+            duration: 250,
+          });
+      }
+  )
+}
+
+
+let bigImg = document.querySelector('.primarySlide img')
+let title = document.querySelector('.primarySlide h2')
+let thumbnail = document.querySelectorAll('.slides img')
+
+for (let i = 0; i < thumbnail.length; i++) {
+  thumbnail[i].addEventListener(
+    'click',
+    function () {
+      let altTxt = this.getAttribute('alt')
+      let srcBigImg = this.getAttribute('data-srcBigImg')
+      bigImg.setAttribute('alt', altTxt)
+      bigImg.setAttribute('src', srcBigImg)
+      title.innerHTML = altTxt
+      //enlever la classe current à l'élement en cours
+      let actualCurrent = document.querySelector('.slides .current')
+      actualCurrent.classList.remove('current')
+      //ajouter la classe current à l'élement en cours
+      this.parentNode.classList.add('current')
+    }
+  )
+}
+
+
+function loose(){
+
+}
