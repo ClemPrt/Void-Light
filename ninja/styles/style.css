@@ -1,5 +1,7 @@
 body{
   margin: 0;
+  background: url("../images/etoiles.jpg") no-repeat;
+  background-size: cover; }
 }
 
 .clearBoth{
@@ -14,21 +16,23 @@ svg{
 
 p{
   text-align: center;
+  color: #77e86f;
 }
+
+
+
 .item{
   margin: 0;
   width: 80px;
   float: left;
-  background-color: #542671;
   border-radius: 10px;
-  padding-top: 15px;
+  padding: 15px 10px 0px 10px;
 }
 
-.container{
-  width: 55%;
+.top_menu{
+  width: 800px;
   display: block;
   margin: 0 auto;
-
 }
 
 .shipou{
@@ -40,12 +44,12 @@ p{
 
 .cards svg{
   float: left;
-  width: 90px;
+  width: 70px;
   margin-top: 93px;
+  padding: 0 30px;
 }
 
-.cards{
-width: 570px;
-margin: 0 auto;
-justify-content: space-between;
+  .cards{
+  width: 800px;
+  margin: 0 auto;
 }
