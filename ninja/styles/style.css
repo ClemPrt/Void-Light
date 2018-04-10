@@ -1,0 +1,51 @@
+body{
+  margin: 0;
+}
+
+.clearBoth{
+  clear: both;
+}
+
+svg{
+  width: 50px;
+  display: block;
+  margin: 0 auto;
+}
+
+p{
+  text-align: center;
+}
+.item{
+  margin: 0;
+  width: 80px;
+  float: left;
+  background-color: #542671;
+  border-radius: 10px;
+  padding-top: 15px;
+}
+
+.container{
+  width: 55%;
+  display: block;
+  margin: 0 auto;
+
+}
+
+.shipou{
+  width: 400px;
+  display: block;
+  margin: 0 auto;
+  transform: rotate(90deg);
+}
+
+.cards svg{
+  float: left;
+  width: 90px;
+  margin-top: 93px;
+}
+
+.cards{
+width: 570px;
+margin: 0 auto;
+justify-content: space-between;
+}
