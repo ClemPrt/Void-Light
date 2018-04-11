@@ -4,11 +4,11 @@
          url('../moonhouse-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
 html{
   font-size: 62.5%;
+  user-select: none;
 }
 
 body{
@@ -16,6 +16,7 @@ body{
   background: url("../images/etoiles.jpg") no-repeat;
   background-size: cover;
   position: relative;
+  overflow: hidden;
 }
 
 .clearBoth{
@@ -39,7 +40,7 @@ p.absolute{
   position: absolute;
   top: 250px;
   left: 500px;
-  color:#77e86f;
+  color:#e86f6f;
   font-size: 10em;
   font-family: 'moonhouseregular';
 }
@@ -68,6 +69,10 @@ h2{
 .slides li{
   display: inline-block;
   margin: 20px 20px 0px 20px;
+}
+
+.slides li img{
+  border: 3px solid white;
 }
 
 .size_slide{
@@ -103,18 +108,25 @@ h2{
 .cards svg{
   float: left;
   width: 70px;
-  margin-top: 70px;
   padding: 0 30px;
 }
 
   .cards{
-  width: 800px;
+  width: 650px;
   margin: 0 auto;
   cursor: pointer;
 }
 
+.cards_info{
+  margin-top: 70px;
+}
+
 .choice{
   background-color: red;
+}
+
+.bitcoins_total{
+  cursor: pointer;
 }
 
 .bitcoins{
@@ -123,4 +135,48 @@ h2{
   left: 30px;
   }
 
+.bitcoin_button_option{
+  position: absolute;
+  top: 300px;
+  left: 100px;
+  color: white;
+}
+
+
+.eventCard{
+  position: absolute;
+  width: 360px;
+  top: 150px;
+  right: 50px;
+}
+
+.eventCardFood1, .eventCardWater1, .eventCardOxygen1, .eventCardComfort1, .eventCardEnergy1, .eventCardHygiene1{
+  display: none;
+}
+
+
+.answerYesFood1, .answerNoFood1, .answerYesWater1, .answerNoWater1, .answerYesOxygen1, .answerNoOxygen1, .answerYesComfort1, .answerNoComfort1, .answerYesEnergy1, .answerNoEnergy1, .answerYesHygiene1, .answerNoHygiene1{
+  cursor: pointer;
+}
+
+.chrono{
+  color: white;
+  font-size: 2em;
+  font-family: "Roboto";
+  position: absolute;
+  top: 30px;
+  left: 50px;
+}
+
+input{
+  border: 1px solid white;
+  background: rgba(255, 255, 255, 0);
+  color: white;
+}
+
+.version{
+  position: absolute;
+  top: 0px;
+  right: 10px;
+}
 

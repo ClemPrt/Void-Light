@@ -1,25 +1,66 @@
-let population = 198
-let food = 100
-let water = 100
-let energy = 100
-let hygiene = 100
-let oxygen = 100
-let comfort = 50
-let humor = 75
-let min = 25
-let medium = 50
-let max = 75
-let bitcoins = 100
-let animate = document.querySelectorAll('.animate')
-let moreFood = document.querySelector('.moreFood')
-let moreWater = document.querySelector('.moreWater')
-let moreOxygen = document.querySelector('.moreOxygen')
-let moreEnergy = document.querySelector('.moreEnergy')
-let moreHygiene = document.querySelector('.moreHygiene')
-let moreComfort = document.querySelector('.moreComfort')
+let population, food, water, energy, hygiene, oxygen, comfort, humor,
+min, medium, max, bitcoins, changeBitcoinsComfort, animate,perso, moreFood,
+moreComfort, moreEnergy, moreHygiene, moreOxygen, moreWater,
+  eventCardFood1, eventCardComfort1, eventCardOxygen1, eventCardWater1, eventCardHygiene1,
+eventFood, eventWater, eventOxygen, eventEnergy, eventHygiene, answerYesFood1, answerNoFood1, answerYesWater1, answerNoWater1,
+  answerYesComfort1, answerNoComfort1, answerYesOxygen1, answerNoOxygen1, answerYesEnergy1, answerNoEnergy1, answerYesHygiene1, answerNoHygiene1
+
+
+
+
+function init(){
+population = 100
+food = 105
+water = 115
+energy = 120
+hygiene = 110
+oxygen = 130
+comfort = 80
+humor = 75
+min = 25
+medium = 50
+max = 75
+bitcoins = 30
+changeBitcoinsComfort = document.querySelector('.bitcoins_total')
+animate = document.querySelectorAll('.animate')
+perso = document.querySelectorAll('.perso')
+moreFood = document.querySelector('.moreFood')
+moreWater = document.querySelector('.moreWater')
+moreOxygen = document.querySelector('.moreOxygen')
+moreEnergy = document.querySelector('.moreEnergy')
+moreHygiene = document.querySelector('.moreHygiene')
+moreComfort = document.querySelector('.moreComfort')
+eventCardFood1 = document.querySelector(".eventCardFood1")
+eventCardWater1 = document.querySelector(".eventCardWater1")
+eventCardOxygen1 = document.querySelector(".eventCardOxygen1")
+eventCardComfort1 = document.querySelector(".eventCardComfort1")
+eventCardEnergy1 = document.querySelector(".eventCardEnergy1")
+eventCardHygiene1 = document.querySelector(".eventCardHygiene1")
+eventFood = document.querySelector(".eventFood")
+eventWater = document.querySelector(".eventWater")
+eventOxygen = document.querySelector(".eventOxygen")
+eventComfort = document.querySelector(".eventComfort")
+eventEnergy = document.querySelector(".eventEnergy")
+eventHygiene = document.querySelector(".eventHygiene")
+answerYesFood1 = document.querySelector(".answerYesFood1")
+answerNoFood1 = document.querySelector(".answerNoFood1")
+answerYesWater1 = document.querySelector(".answerYesWater1")
+answerNoWater1 = document.querySelector(".answerNoWater1")
+answerYesOxygen1 = document.querySelector(".answerYesOxygen1")
+answerNoOxygen1 = document.querySelector(".answerNoOxygen1")
+answerYesComfort1 = document.querySelector(".answerYesComfort1")
+answerNoComfort1 = document.querySelector(".answerNoComfort1")
+answerYesEnergy1 = document.querySelector(".answerYesEnergy1")
+answerNoEnergy1 = document.querySelector(".answerNoEnergy1")
+answerYesHygiene1 = document.querySelector(".answerYesHygiene1")
+answerNoHygiene1 = document.querySelector(".answerNoHygiene1")
+}
+
+init()
 
 let timer = setInterval(
   function(){
+    myBitcoins()
     myPopulation()
     myFood()
     myWater()
@@ -31,19 +72,26 @@ let timer = setInterval(
   },700
 )
 
+let timer_event = setInterval(
+  function(){
+    myRandom()
+  }, 20000
+)
 
 
+function myBitcoins(){
+  document.querySelector('#bitcoins').innerHTML = Math.floor(bitcoins)
+}
 
 
 function myPopulation() {
-  document.querySelector('#population').innerHTML = Math.floor(`${population}`)
+  document.querySelector('#population').innerHTML = (Math.floor(population)+" colons")
   if (population < 1) {
     let absolute = document.querySelector('.absolute').innerHTML = "PERDU"
   } else if (population >= 200) {
     absolute = document.querySelector('.absolute').innerHTML = "BRAVO"
   } else if ((food || water) > 100) {
     population += 0.3
-    console.log("GOOD")
   } else if ((food || water) > 150) {
     population += 3
     console.log("ALLEZ")
@@ -58,7 +106,7 @@ function myPopulation() {
 }
 
 function myFood() {
-  document.querySelector('#food').innerHTML = Math.floor(food -= population / 100)
+  document.querySelector('#food').innerHTML = (Math.floor(food -= (population/1.5) / 100)+"%")
 
   if ((food) < 1){
     food = 0
@@ -68,7 +116,7 @@ function myFood() {
 }
 
 function myWater() {
-  document.querySelector('#water').innerHTML = Math.floor(water -= population / 100)
+  document.querySelector('#water').innerHTML = (Math.floor(water -= population / 100) + "%")
 
   if ((water) < 1){
     water = 0
@@ -78,7 +126,7 @@ function myWater() {
 }
 
 function myOxygen() {
-  document.querySelector('#oxygen').innerHTML = Math.floor(oxygen -= population / 100)
+  document.querySelector('#oxygen').innerHTML = (Math.floor(oxygen -= (population / 2) / 100) + "%")
 
   if ((oxygen) < 1){
     oxygen = 0
@@ -88,27 +136,31 @@ function myOxygen() {
 }
 
 function myHumor() {
-  document.querySelector('#humor').innerHTML = Math.floor(humor)
+  document.querySelector('#humor').innerHTML = (Math.floor(humor) + "%")
 
   if ((humor) < 1){
     humor = 0
-  } else if ((food && water && oxygen && hygiene) > 75){
+  } else if ((food || water || oxygen || hygiene) > 75){
     humor += 0.1
-  } else {
-    humor -= 10
+  } else if ((food || water || oxygen || hygiene) < 50){
+    humor -= 0.5
   }
 }
 
 function myComfort() {
-  document.querySelector('#comfort').innerHTML = Math.floor(comfort -= (population/4) / 200)
+  document.querySelector('#comfort').innerHTML = (Math.floor(comfort -= (population / 8) / 200) + "%")
 
   if ((comfort) < 1){
     comfort = 0
+  } else if ((food || water || oxygen || energy) > 75) {
+    comfort += 0.3
+  } else {
+    comfort -= 0.5
   }
 }
 
 function myEnergy() {
-  document.querySelector('#energy').innerHTML = Math.floor(energy -= population / 100)
+  document.querySelector('#energy').innerHTML = (Math.floor(energy -= (population / 1.9) / 100) + "%")
 
 if ((energy) < 1){
   energy = 1
@@ -118,7 +170,7 @@ if ((energy) < 1){
 }
 
 function myHygiene() {
-  document.querySelector('#hygiene').innerHTML = Math.floor(hygiene -= (population/4) / 100)
+  document.querySelector('#hygiene').innerHTML = (Math.floor(hygiene -= (population / 4) / 100) + "%")
 
   if ((hygiene) < 1){
     hygiene = 0
@@ -126,55 +178,65 @@ function myHygiene() {
 }
 
 
-
-
+changeBitcoinsComfort.addEventListener(
+  "click",
+  function(){
+    if(comfort > 10){
+      comfort -= 10
+      bitcoins += 5
+    }
+  }
+)
 
 
 moreFood.addEventListener(
   "click",
   function(){
+    if(bitcoins > 5){
     food += 30
     bitcoins -= 5
+    }
   }
 )
 
 moreWater.addEventListener(
   "click",
   function () {
-    water += 30
-    bitcoins -= 5
+    if (bitcoins > 5) {
+      water += 30
+      bitcoins -= 5
+    }
   }
 )
 
 moreOxygen.addEventListener(
   "click",
   function () {
-    oxygen += 30
-    bitcoins -= 5
+    if (bitcoins > 5) {
+      oxygen += 30
+      bitcoins -= 5
+    }
   }
 )
 
-moreComfort.addEventListener(
-  "click",
-  function () {
-    comfort += 30
-    bitcoins -= 5
-  }
-)
 
 moreEnergy.addEventListener(
   "click",
   function () {
-    energy += 30
-    bitcoins -= 5
+    if (bitcoins > 5) {
+      energy += 30
+      bitcoins -= 5
+    }
   }
 )
 
 moreHygiene.addEventListener(
   "click",
   function () {
-    hygiene += 30
-    bitcoins -= 5
+    if (bitcoins > 0) {
+      hygiene += 30
+      bitcoins -= 5
+    }
   }
 )
 
@@ -187,7 +249,8 @@ for(let i = 0; i < animate.length; i++){
         animate[i].animate([
           // keyframes
           { transform: 'translateY(0px)' },
-          { transform: 'translateY(-10px)' }
+          { transform: 'translateY(-10px)' },
+          { transform: 'translateY(0px)' },
         ], {
             // timing options
             duration: 250,
@@ -224,3 +287,236 @@ function loose(){
 
 }
 
+
+
+function myRandom(){
+    let number = Math.floor(Math.random() * 20)
+    if (number === 1) {
+     // let number2 = Math.floor(Math.random() * 2)
+      eventFood.style.border = "3px solid red"
+      eventFood.addEventListener(
+        "click",
+        function(){
+          eventFood.style.border = "3px solid white"
+          eventCardFood1.style.display = "block"
+        }
+      )
+
+      answerYesFood1.addEventListener(
+        "click",
+        function(){
+          food += 20,
+          humor -= 20,
+          eventCardFood1.style.display = "none"
+        }
+      )
+      answerNoFood1.addEventListener(
+        "click",
+        function () {
+          food -= 20,
+          humor += 20,
+          eventCardFood1.style.display = "none"
+        }
+      )
+    } else if (number === 2)  {
+      eventWater.style.border = "3px solid red"
+      eventWater.addEventListener(
+        "click",
+        function () {
+          eventWater.style.border = "3px solid white"
+          eventCardWater1.style.display = "block"
+        }
+      )
+
+      answerYesWater1.addEventListener(
+        "click",
+        function () {
+          water += 20,
+          humor -= 20,
+          eventCardWater1.style.display = "none"
+        }
+      )
+      answerNoWater1.addEventListener(
+        "click",
+        function () {
+          water -= 20,
+          comfort -= 20,
+          eventCardWater1.style.display = "none"
+        }
+      )
+    } else if (number === 3) {
+      eventOxygen.style.border = "3px solid red"
+      eventOxygen.addEventListener(
+        "click",
+        function () {
+          eventOxygen.style.border = "3px solid white"
+          eventCardOxygen1.style.display = "block"
+        }
+      )
+
+      answerYesOxygen1.addEventListener(
+        "click",
+        function () {
+          energy -= 20,
+          humor += 20,
+          eventCardOxygen1.style.display = "none"
+        }
+      )
+      answerNoOxygen1.addEventListener(
+        "click",
+        function () {
+          humor -= 20,
+          comfort -= 20,
+          oxygen += 20,
+          eventCardOxygen1.style.display = "none"
+        }
+      )
+    } else if (number === 4) {
+      eventComfort.style.border = "3px solid red"
+      eventComfort.addEventListener(
+        "click",
+        function () {
+          eventComfort.style.border = "none"
+          eventCardComfort1.style.display = "block"
+        }
+      )
+
+      answerYesComfort1.addEventListener(
+        "click",
+        function () {
+          energy -= 20,
+          humor += 20,
+          comfort += 20
+          eventCardComfort1.style.display = "none"
+        }
+      )
+      answerNoComfort1.addEventListener(
+        "click",
+        function () {
+          energy += 20,
+          humor -= 20,
+          comfort -= 20,
+          eventCardComfort1.style.display = "none"
+        }
+      )
+    } else if (number === 5){
+      eventEnergy.style.border = "3px solid red"
+      eventEnergy.addEventListener(
+        "click",
+        function () {
+          eventEnergy.style.border = "none"
+          eventCardEnergy1.style.display = "block"
+        }
+      )
+
+      answerYesEnergy1.addEventListener(
+        "click",
+        function () {
+          water -= 20,
+          oxygene += 20,
+            eventCardEnergy1.style.display = "none"
+        }
+      )
+      answerNoEnergy1.addEventListener(
+        "click",
+        function () {
+          oxygen -= 20,
+          energy += 20,
+            eventCardEnergy1.style.display = "none"
+        }
+      ) 
+    } else if (number === 6) {
+      eventHygiene.style.border = "3px solid red"
+      eventHygiene.addEventListener(
+        "click",
+        function () {
+          eventHygiene.style.border = "none"
+          eventCardHygiene1.style.display = "block"
+        }
+      )
+
+      answerYesHygiene1.addEventListener(
+        "click",
+        function () {
+          water -= 20,
+          energy -= 20,
+          comfort += 20,
+          hygiene += 20,
+          humor += 20
+          eventCardHygiene1.style.display = "none"
+        }
+      )
+      answerNoHygiene1.addEventListener(
+        "click",
+        function () {
+          humor -= 20
+          eventCardHygiene1.style.display = "none"
+        }
+      )
+    }
+
+  }
+
+
+
+
+
+  var startTime = 0
+  var start = 0
+  var end = 0
+  var diff = 0
+  var timerID = 0
+function chrono(){
+    end = new Date()
+	diff = end - start
+	diff = new Date(diff)
+	var msec = diff.getMilliseconds()
+	var sec = diff.getSeconds()
+	var min = diff.getMinutes()
+	var hr = diff.getHours()-1
+	if (min < 10){
+    min = "0" + min
+  }
+  if (sec < 10){
+    sec = "0" + sec
+  }
+  if(msec < 10){
+    msec = "00" + msec
+  }
+  else if(msec < 100){
+    msec = "0" + msec
+  }
+  document.getElementById("chronotime").innerHTML = hr + ":" + min + ":" + sec + ":" + msec
+	timerID = setTimeout("chrono()", 10)
+}
+function chronoStart(){
+  document.chronoForm.startstop.value = "stop!"
+	document.chronoForm.startstop.onclick = chronoStop
+	document.chronoForm.reset.onclick = chronoReset
+	start = new Date()
+  chrono()
+  init()
+}
+function chronoContinue(){
+    document.chronoForm.startstop.value = "stop!"
+	document.chronoForm.startstop.onclick = chronoStop
+	document.chronoForm.reset.onclick = chronoReset
+	start = new Date()-diff
+	start = new Date(start)
+	chrono()
+}
+function chronoReset(){
+    document.getElementById("chronotime").innerHTML = "0:00:00:000"
+  start = new Date()
+  init()
+}
+function chronoStopReset(){
+    document.getElementById("chronotime").innerHTML = "0:00:00:000"
+	document.chronoForm.startstop.onclick = chronoStart
+}
+function chronoStop(){
+    document.chronoForm.startstop.value = "start!"
+	document.chronoForm.startstop.onclick = chronoContinue
+	document.chronoForm.reset.onclick = chronoStopReset
+	clearTimeout(timerID)
+}
