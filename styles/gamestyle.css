@@ -215,6 +215,7 @@ h2 {
 .eventCardEnergy1,
 .eventCardHygiene1 {
   display: none;
+  margin-bottom: 300px;
 }
 
 .answerYesFood1,
