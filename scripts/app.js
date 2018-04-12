@@ -602,7 +602,7 @@ function chrono(){
 function yeartime(){
 year = document.querySelector("#yeartime")
 let yearCount = 0
-year.innerHTML = yearCount + " annnée(s)"
+year.innerHTML = yearCount + " an"
 setInterval(
   () => {
     yearCount += 1
