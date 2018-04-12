@@ -1,8 +1,6 @@
 @font-face {
-  font-family: 'moonhouseregular';
-  src: url('../moonhouse-webfont.woff2') format('woff2'), url('../moonhouse-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'moonhouse';
+  src: url(../fonts/moonhouse.ttf);
 }
 
 html {
@@ -45,7 +43,7 @@ p.absolute {
   left: 500px;
   color: #e86f6f;
   font-size: 10em;
-  font-family: 'moonhouseregular';
+  font-family: 'moonhouse';
 }
 
 h2 {

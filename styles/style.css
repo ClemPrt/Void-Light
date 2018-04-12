@@ -1,0 +1,429 @@
+body{
+  margin: 0;
+  font-size: 62.5%;
+
+}
+
+main {
+  position: relative;
+  z-index: 0;
+
+}
+
+/** Gestion des Polices **/
+
+@font-face {
+  font-family: 'arialRounded';
+  src: url(../fonts/ArialRoundedMTStd.otf);
+}
+
+@font-face {
+  font-family: 'moonhouse';
+  src: url(../fonts/moonhouse.ttf);
+}
+
+/** BackGround Image **/
+
+body {
+  background:url(../images/background.png);
+  background-size:cover;
+}
+
+/** Grand Titre**/
+
+body #title {
+  font-family: moonhouse, sans-serif;
+  color: white;
+  font-size: 8rem;
+  text-align: center;
+  margin-top: 300px;
+}
+
+/** Histoire **/
+body #littleTitle{
+  font-family: moonhouse, sans-serif;
+  color: white;
+  font-size: 3.5rem;
+  text-align: center;
+  margin-top: 50px;
+}
+
+#historyTitle{
+  font-family: moonhouse, sans-serif;
+  color: white;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 100px;
+}
+
+#historyText{
+  font-family: arialRounded, sans-serif;
+  color: white;
+  text-align: center;
+  font-size: 1.4rem;
+  margin: 50px 100px;
+}
+
+#continueButton{
+  color: white;
+  font-family: moonhouse, sans-serif;
+  font-size: 2rem;
+  position: absolute;
+  right: 200px;
+  border: solid white 3px;
+  padding: 10px 20px;
+  border-radius: 30px;
+}
+
+/** Premiere Page **/
+
+body #waitingClickButton {
+  font-family: moonhouse, sans-serif;
+  color: white;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+#logo img{
+  width: 200px;
+  position: fixed;
+  bottom: -50px;
+  left: 45%;
+}
+
+/** Nav **/
+
+#nav{
+  position :fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #542671;
+  padding: 15px 0;
+}
+
+#nav img {
+  width: 200px;
+  position: absolute;
+  bottom: 25px;
+  left: 45%;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.4rem;
+  margin :0 100px;
+  position: relative;
+  bottom: 50px;
+  font-family: arialRounded, sans-serif;
+}
+
+#moreButton {
+  margin-top: 20px;
+}
+
+#moreButton img{
+  width: 30px;
+  bottom: 10px;
+  left: 50%;
+}
+
+#arrowUp{
+  width: 30px;
+  margin: 0 auto;
+  display: flex;
+  padding-top: 20px;
+}
+
+.selected{
+  padding: 10px 20px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom: white solid;
+}
+
+/** Bouton Play **/
+
+#playButton {
+  font-family: moonhouse, sans-serif;
+  font-size: 4rem;
+  background-color: #4d246a;
+  border-radius: 30px;
+  color: white;
+  text-align: center;
+  width: 350px;
+  margin: 0 auto;
+}
+
+/** Sponsors Page **/
+
+#sponsors h1{
+  color: white;
+  font-size: 2.8rem;
+  font-family: moonhouse, sans-serif;
+  text-align: center;
+}
+
+#sponsors img{
+  margin: 40px;
+}
+
+#sponsors .oneCol{
+  width: 150px;
+}
+
+#sponsors .twoCol{
+  width: 300px;
+  position: relative;
+  bottom: 30px;
+}
+
+#fisrtRowSponsors, #secondRowSponsors{
+  width: 1300px;
+  margin: 0 auto;
+}
+
+/** Login **/
+
+.loginPreButton{
+  right: 0px;
+  width: 20px;
+  position: fixed;
+  background: #4d246a;
+  padding: 10px 30px;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  top: 50px;
+}
+
+/** News Page **/
+
+.news{
+  color: white;
+  font-family: arialRounded, sans-serif;
+  width: 800px;
+  position: fixed;
+  z-index: 1;
+  top: 150px;
+  left: 25%;
+  background-color: #4d246a;
+  overflow: scroll;
+  height: 550px;
+  border-radius: 30px;
+}
+
+.newsTitle{
+  font-family: moonhouse, sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.right div{
+  right: 50px;
+}
+
+.right h2,.right h3, .right p{
+  width: 500px;
+}
+
+.newsImgRight{
+  width: 150px;
+  position: absolute;
+  right: 50px;
+}
+
+.left h2,.left h3,.left p{
+  margin-left: 180px;
+}
+
+.news1 , .news2, .news3{
+  margin: 50px;
+  padding-bottom: 20px;
+}
+
+.news1 img, .news3 img{
+    width: 150px;
+    position: absolute;
+}
+
+#close{
+  width: 20px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+/** Contact Page */
+
+#navContactPage{
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  background-color: #542671;
+  top: 100px;
+}
+
+#navContactPage img{
+  bottom: -25px;
+  width: 200px;
+  position: absolute;
+  left: 45%;
+}
+
+#navContactPage a{
+  bottom: 35px;
+}
+
+.supportTitle{
+  position: absolute;
+  top: 10px;
+  color: white;
+  font-family: moonhouse, sans-serif;
+  font-size: 1.3rem;
+  left: 35%;
+}
+
+#contactform{
+  height: 300px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 1000px;
+  background: #542671;
+  margin: 300px auto;
+  position: relative;
+  position: fixed;
+  z-index: 1;
+  left: 20%;
+  top: 0;
+}
+
+#contactform input{
+  padding: 10px 20px;
+  font-size: 0.8rem;
+  font-family: arialRounded, sans-serif;
+  position: absolute;
+  left: 95px;
+  top: 30px;
+  width: 300px;
+  border-radius: 20px;
+  margin-top: 20px;
+
+}
+
+#contactform textarea {
+  width: 800px;
+  height: 100px;
+  position: absolute;
+  left: 95px;
+  padding: 10px 20px;
+  font-size: 0.8rem;
+  font-family: arialRounded, sans-serif;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+#contactform button {
+  position: absolute;
+  right: 80px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  bottom: 25px;
+  font-family: moonhouse, sans-serif;
+}
+
+/** Login Form **/
+
+#loginDiv{
+  z-index: 1;
+  background-color: #4d246a;
+  width: 400px;
+  text-align: center;
+  position: fixed;
+  left: 38%;
+  top: 40%;
+  border-radius: 30px;
+}
+
+#user{
+  position: absolute;
+  padding: 10px 20px;
+  width: 150px;
+  left: 20%;
+  margin-top: 40px;
+}
+
+#pass{
+  position: absolute;
+  padding: 10px 20px;
+  width: 150px;
+  left: 20%;
+  top: 100px;
+}
+
+#loginDiv img{
+  width: 34px;
+  background-color: white;
+  padding: 25px 5px;
+  position: relative;
+  left: 30%;
+  margin-top: 40px;
+  margin-bottom:30px;
+}
+
+#loginDiv .text {
+  color: white;
+  padding-bottom: 15px;
+  font-size: 0.9rem;
+  font-family: arialRounded, sans-serif;
+}
+
+/** Footer **/
+
+footer{
+  background-color: #542671;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+footer div{
+  margin: 20px 0;
+}
+
+footer a {
+  text-decoration: none;
+  color: white;
+  font-family: arialRounded, sans-serif;
+}
+
+footer #firstRow{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 1.6rem;
+}
+
+footer #firstRow a {
+  margin: 0 20px;
+}
+
+footer #secondRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+footer #secondRow a img{
+  width: 50px;
+  height: 50px;
+  margin: 0 20px;
+}
+
+/** Transition **/
+.opacity{
+  opacity: 0.3;
+}

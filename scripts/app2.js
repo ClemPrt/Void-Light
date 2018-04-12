@@ -168,7 +168,7 @@ function myBitcoins(){
 
 function myPopulation() {
   document.querySelector('#population').innerHTML = (Math.floor(population)+" colons")
-  if (population < 1) {
+  if (population<1) {
     let absolute = document.querySelector('.absolute').innerHTML = "PERDU"
     chronoStop()
   } else if (population >= 200) {
