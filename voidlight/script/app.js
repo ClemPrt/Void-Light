@@ -1,4 +1,4 @@
-/* 
+/*
   01 - Variables
   02 - Variables initialisation
   03 - setInterval function
@@ -8,7 +8,7 @@
   07 - Animation cards + bitcoins
   08 - Slider
   09 - Random events
-  10 - Chrono + 
+  10 - Chrono +
   11 - Slider background
 */
 
@@ -16,64 +16,64 @@
 
 
 /******************************************
- *                              
+ *
  *              VARIABLES
- * 
+ *
  * ****************************************/
 let population,
-food, 
-water, 
-energy, 
-hygiene, 
-oxygen, 
-comfort, 
-humor, 
+food,
+water,
+energy,
+hygiene,
+oxygen,
+comfort,
+humor,
 name,
-min, 
-medium, 
-max, 
-bitcoins, 
-changeBitcoinsComfort, 
+min,
+medium,
+max,
+bitcoins,
+changeBitcoinsComfort,
 animate,
-perso, 
+perso,
 moreFood,
-moreComfort, 
-moreEnergy, 
-moreHygiene, 
-moreOxygen, 
+moreComfort,
+moreEnergy,
+moreHygiene,
+moreOxygen,
 moreWater,
-eventCardFood1, 
-eventCardComfort1, 
-eventCardOxygen1, 
-eventCardWater1, 
-eventCardHygiene1, 
+eventCardFood1,
+eventCardComfort1,
+eventCardOxygen1,
+eventCardWater1,
+eventCardHygiene1,
 year,
-eventFood, 
-eventWater, 
-eventOxygen, 
-eventEnergy, 
-eventHygiene, 
-answerYesFood1, 
-answerNoFood1, 
-answerYesWater1, 
+eventFood,
+eventWater,
+eventOxygen,
+eventEnergy,
+eventHygiene,
+answerYesFood1,
+answerNoFood1,
+answerYesWater1,
 answerNoWater1,
-answerYesComfort1, 
-answerNoComfort1, 
-answerYesOxygen1, 
-answerNoOxygen1, 
-answerYesEnergy1, 
-answerNoEnergy1, 
-answerYesHygiene1, 
-answerNoHygiene1, 
+answerYesComfort1,
+answerNoComfort1,
+answerYesOxygen1,
+answerNoOxygen1,
+answerYesEnergy1,
+answerNoEnergy1,
+answerYesHygiene1,
+answerNoHygiene1,
 answerReady
 
 
 
 
 /******************************************
- *                              
+ *
  *        INITIALISATION VARIABLES
- * 
+ *
  * ****************************************/
 function init(){
 population = 100
@@ -130,9 +130,9 @@ init()
 
 
 /******************************************
- *                              
+ *
  *         SETINTERVAL FUNCTION
- * 
+ *
  * ****************************************/
 let timer = setInterval(
   function(){
@@ -151,16 +151,16 @@ let timer = setInterval(
 let timer_event = setInterval(
   function(){
     myRandom()
-  }, 22000
+  }, 18000
 )
 
 
 
 
 /******************************************
- *                              
+ *
  *    FUNCTION RESSOURCES + POPULATIONS
- * 
+ *
  * ****************************************/
 function myBitcoins(){
   document.querySelector('#bitcoins').innerHTML = Math.floor(bitcoins)
@@ -170,19 +170,18 @@ function myPopulation() {
   document.querySelector('#population').innerHTML = (Math.floor(population)+" colons")
   if (population < 1) {
     let absolute = document.querySelector('.absolute').innerHTML = "PERDU"
+    chronoStop()
   } else if (population >= 200) {
     absolute = document.querySelector('.absolute').innerHTML = "BRAVO"
+    chronoStop()
   } else if ((food || water) > 100) {
     population += 0.3
   } else if ((food || water) > 150) {
     population += 3
-    console.log("ALLEZ")
   } else if ((food || water) > 175) {
     population += 5
-    console.log("175")
   } else if ((food || water) > 200) {
     population += 10
-    console.log("200")
   }
 }
 
@@ -222,11 +221,11 @@ function myHumor() {
   if ((humor) < 1){
     humor = 0
   } else if ((food || water || oxygen || hygiene) > 75){
-    humor += 0.1
-  } else if ((food || water || oxygen || hygiene) < 50){
+    humor += 0.4
+  } else if ((food || water || oxygen || hygiene) < 40){
     humor -= 1
   } else if ((food || water || oxygen || hygiene) < 25) {
-    humor -= 10
+    humor -= 15
   }
 }
 
@@ -236,9 +235,9 @@ function myComfort() {
   if ((comfort) < 1){
     comfort = 0
   } else if ((food || water || oxygen || energy) > 75) {
-    comfort += 1
+    comfort += 0.65
   } else {
-    comfort -= 0.5
+    comfort -= 0.4
   }
 }
 
@@ -246,8 +245,8 @@ function myEnergy() {
   document.querySelector('#energy').innerHTML = (Math.floor(energy -= (population / 1.9) / 100) + "%")
 
 if ((energy) < 1){
-  energy = 1
-} else if (energy < 25){
+  energy = 0
+} else if (energy < 17){
   food -= 1, water -= 1, oxygen -= 5
 }
 }
@@ -263,14 +262,14 @@ function myHygiene() {
 
 
 /******************************************
- *                              
+ *
  *            SYSTEM CARDS
- * 
+ *
  * ****************************************/
 changeBitcoinsComfort.addEventListener(
   "click",
   function(){
-    if(comfort > 10){
+    if(comfort >= 10){
       comfort -= 10
       bitcoins += 5
     }
@@ -281,7 +280,7 @@ changeBitcoinsComfort.addEventListener(
 moreFood.addEventListener(
   "click",
   function(){
-    if(bitcoins > 5){
+    if(bitcoins >= 5){
     food += 30
     bitcoins -= 5
     }
@@ -291,7 +290,7 @@ moreFood.addEventListener(
 moreWater.addEventListener(
   "click",
   function () {
-    if (bitcoins > 5) {
+    if (bitcoins >= 5) {
       water += 30
       bitcoins -= 5
     }
@@ -301,7 +300,7 @@ moreWater.addEventListener(
 moreOxygen.addEventListener(
   "click",
   function () {
-    if (bitcoins > 5) {
+    if (bitcoins >= 5) {
       oxygen += 30
       bitcoins -= 5
     }
@@ -312,7 +311,7 @@ moreOxygen.addEventListener(
 moreEnergy.addEventListener(
   "click",
   function () {
-    if (bitcoins > 5) {
+    if (bitcoins >= 5) {
       energy += 30
       bitcoins -= 5
     }
@@ -322,7 +321,7 @@ moreEnergy.addEventListener(
 moreHygiene.addEventListener(
   "click",
   function () {
-    if (bitcoins > 0) {
+    if (bitcoins >= 0) {
       hygiene += 30
       bitcoins -= 5
     }
@@ -331,9 +330,9 @@ moreHygiene.addEventListener(
 
 
 /******************************************
- *                              
+ *
  *       ANIMATION CARDS + BITCOINS
- * 
+ *
  * ****************************************/
 for(let i = 0; i < animate.length; i++){
   animate[i].addEventListener(
@@ -355,9 +354,9 @@ for(let i = 0; i < animate.length; i++){
 
 
 /******************************************
- *                              
+ *
  *               SLIDER
- * 
+ *
  * ****************************************/
 let bigImg = document.querySelector('.primarySlide img')
 let title = document.querySelector('.primarySlide h2')
@@ -377,9 +376,9 @@ for (let i = 0; i < thumbnail.length; i++) {
 }
 
 /******************************************
- *                              
+ *
  *             RANDOM EVENTS
- * 
+ *
  * ****************************************/
 function myRandom(){
     let number = Math.floor(Math.random() * 7)
@@ -398,7 +397,8 @@ function myRandom(){
         "click",
         function(){
           food += 5,
-          humor -= 5,
+          humor -= 3,
+          bitcoins += 2,
           eventCardFood1.style.display = "none"
         }
       )
@@ -406,7 +406,7 @@ function myRandom(){
         "click",
         function () {
           food -= 5,
-          humor += 5,
+          humor += 3,
           eventCardFood1.style.display = "none"
         }
       )
@@ -424,7 +424,8 @@ function myRandom(){
         "click",
         function () {
           water += 5,
-          humor -= 5,
+          humor -= 3,
+          bitcoins += 2,
           eventCardWater1.style.display = "none"
         }
       )
@@ -432,7 +433,7 @@ function myRandom(){
         "click",
         function () {
           water -= 5,
-          comfort -= 5,
+          comfort -= 3,
           eventCardWater1.style.display = "none"
         }
       )
@@ -451,14 +452,15 @@ function myRandom(){
         "click",
         function () {
           energy -= 5,
-          humor += 5,
+          humor += 3,
+          bitcoins += 2,
           eventCardOxygen1.style.display = "none"
         }
       )
       answerNoOxygen1.addEventListener(
         "click",
         function () {
-          humor -= 5,
+          humor -= 3,
           comfort -= 5,
           oxygen += 5,
           eventCardOxygen1.style.display = "none"
@@ -481,6 +483,7 @@ function myRandom(){
           energy -= 5,
           humor += 5,
           comfort += 5
+          bitcoins += 2,
           eventCardComfort1.style.display = "none"
         }
       )
@@ -488,7 +491,7 @@ function myRandom(){
         "click",
         function () {
           energy += 5,
-          humor -= 5,
+          humor -= 3,
           comfort -= 5,
           eventCardComfort1.style.display = "none"
         }
@@ -509,6 +512,7 @@ function myRandom(){
         function () {
           water -= 5,
           oxygen += 5,
+          bitcoins += 2,
           eventCardEnergy1.style.display = "none"
         }
       )
@@ -538,14 +542,15 @@ function myRandom(){
           energy -= 5,
           comfort += 5,
           hygiene += 5,
-          humor += 5
+          humor += 5,
+          bitcoins += 2,
           eventCardHygiene1.style.display = "none"
         }
       )
       answerNoHygiene1.addEventListener(
         "click",
         function () {
-          humor -= 5
+          humor -= 3,
           eventCardHygiene1.style.display = "none"
         }
       )
@@ -556,18 +561,19 @@ function myRandom(){
     "click",
     function(){
       eventCardMusk.style.display = "none"
+      chronoStart()
     }
   )
 
-  
+
 
 
 
 
 /******************************************
- *                              
+ *
  *                CHRONO
- * 
+ *
  * ****************************************/
   let startTime = 0
   let start = 0
@@ -575,7 +581,7 @@ function myRandom(){
   let diff = 0
   let timerID = 0
 function chrono(){
-    end = new Date()
+  end = new Date()
 	diff = end - start
 	diff = new Date(diff)
 	let msec = diff.getMilliseconds()
@@ -588,6 +594,7 @@ function chrono(){
   if (sec < 10){
     sec = "0" + sec
   }
+
   if(msec < 10){
     msec = "00" + msec
   }
@@ -601,8 +608,8 @@ function chrono(){
 
 function yeartime(){
 year = document.querySelector("#yeartime")
-let yearCount = 0
-year.innerHTML = yearCount + " annnée(s)"
+let yearCount = 1
+year.innerHTML = yearCount + " an"
 setInterval(
   () => {
     yearCount += 1
@@ -613,7 +620,7 @@ setInterval(
 
 
 function chronoStart(){
-  document.chronoForm.startstop.value = "stop!"
+  document.chronoForm.startstop.value = "STOP"
 	document.chronoForm.startstop.onclick = chronoStop
 	document.chronoForm.reset.onclick = chronoReset
 	start = new Date()
@@ -623,7 +630,7 @@ function chronoStart(){
 }
 
 function chronoContinue(){
-    document.chronoForm.startstop.value = "stop!"
+  document.chronoForm.startstop.value = "STOP"
 	document.chronoForm.startstop.onclick = chronoStop
 	document.chronoForm.reset.onclick = chronoReset
 	start = new Date()-diff
@@ -644,27 +651,23 @@ function chronoStopReset(){
 }
 
 function chronoStop(){
-    document.chronoForm.startstop.value = "start!"
+    document.chronoForm.startstop.value = "START"
 	document.chronoForm.startstop.onclick = chronoContinue
 	document.chronoForm.reset.onclick = chronoStopReset
 	clearTimeout(timerID)
 }
 
 
-
-
-
-
 /******************************************
- *                              
+ *
  *           SLIDER BACKGROUND
- * 
+ *
  * ****************************************/
 let positionY = Math.ceil(Math.random() * 600)
 let speed = 1
 function increase() {
 
-    speed += 0.8
+    speed += 0.6
     document.querySelector('.image').style.backgroundPosition = `${speed}px center`
 }
 function scrollImg() {

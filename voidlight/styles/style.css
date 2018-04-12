@@ -12,7 +12,6 @@ html {
 
 .image {
   background: url('../images/etoiles.jpg') -1px center/cover repeat-x;
-  overflow: hidden;
   height: 810px;
   width: 100%;
   z-index: 200;
@@ -21,7 +20,6 @@ html {
 body {
   margin: 0;
   position: relative;
-  overflow: hidden;
 }
 
 .clearBoth {

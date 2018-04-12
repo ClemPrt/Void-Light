@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="styles/style.css">
 </head>
 
-<body onLoad="chronoStart()">
+<body>
   <div class="image">
 
 
@@ -23,7 +23,7 @@
       <span id="yeartime"></span>
       <form name="chronoForm">
         <input type="button" name="startstop" value="start!" onClick="chronoStart()" />
-        <input type="button" name="reset" value="Rejouer!" onClick="chronoReset()" />
+        <input type="button" name="reset" value="Nouvelle partie" onClick="chronoReset()" />
       </form>
     </div>
 
@@ -52,7 +52,7 @@
         <p id="bitcoins"></p>
       </div>
       <div class="bitcoin_button_option">
-        <p class="changeBitcoinsComfort">5 bitcoins contre 10 de confort</p>
+        <p class="changeBitcoinsComfort">5 bitcoins contre 10% de confort </p>
       </div>
     </div>
 
@@ -195,7 +195,7 @@
           <img class="eventWater" src="images/water_mini.png" alt="Salle d'eau" data-srcBigImg="images/water.png">
         </li>
         <li>
-          <img class="eventOxygen" src="images/oxygen_mini.png" alt="Salle d'Oxygen" data-srcBigImg="images/oxygen.png">
+          <img class="eventOxygen" src="images/oxygen_mini.png" alt="Salle d'Oxygene" data-srcBigImg="images/oxygen.png">
         </li>
         <li>
           <img class="eventComfort" src="images/comfort_mini.png" alt="Salle de confort" data-srcBigImg="images/comfort.png">
@@ -312,7 +312,7 @@
           <p>Vous : Je vous reçois 5 sur 5 Monsieur Musk ! Nous avons franchi la stratosphère sans problème.</p>
           <p>Elon Musk : Parfait ! Cette mission de colonisation est extremement importante pour l'avenir de l'Humanité. Vous
             devez faire en sorte que ces colons arrivent sans peine sur Mars. Je compte sur vous !</p>
-          <p class="answerReady">Je suis prêt !</p>
+          <p class="answerReady" onClick="chronoStart()">Je suis prêt !</p>
         </div>
         <div class="eventCardFood1">
           <img class="persoCardCenter" src="images/persoSerre.png" alt="">
