@@ -38,11 +38,13 @@ html {
   height: 810px;
   width: 100%;
   z-index: 200;
+  overflow: hidden;
 }
 
 body {
   margin: 0;
   position: relative;
+  overflow: hidden;
 }
 
 .clearBoth {
