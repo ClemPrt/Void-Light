@@ -1,3 +1,20 @@
+/* 
+  01 - Font face
+  02 - General variable
+  03 - bitcoins variable
+  04 - Slider
+  05 - list icons ressources
+  06 - Cards
+  07 - Event
+  08 - Slider
+*/
+
+
+/******************************************
+ *                              
+ *              FONT FACE
+ * 
+ * ****************************************/
 @font-face {
   font-family: 'moonhouseregular';
   src: url('../fonts/moonhouse-webfont.woff2') format('woff2'), url('../fonts/moonhouse-webfont.woff') format('woff');
@@ -5,6 +22,13 @@
   font-style: normal;
 }
 
+
+
+/******************************************
+ *                              
+ *              GENERAL VARIABLE
+ * 
+ * ****************************************/
 html {
   font-size: 62.5%;
   user-select: none;
@@ -58,6 +82,41 @@ h2 {
   text-align: center;
 }
 
+.version {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+}
+
+
+
+/******************************************
+ *                              
+ *              BITCOINS
+ * 
+ * ****************************************/
+.bitcoins_total {
+  cursor: pointer;
+}
+
+.bitcoins {
+  position: absolute;
+  top: 300px;
+  left: 30px;
+}
+
+.bitcoin_button_option {
+  position: absolute;
+  top: 300px;
+  left: 100px;
+  color: white;
+}
+
+/******************************************
+ *                              
+ *                SLIDER
+ * 
+ * ****************************************/
 #slider {
   width: 960px;
   margin: 0 auto;
@@ -92,18 +151,26 @@ h2 {
   padding: 15px 10px 0px 10px;
 }
 
+
+
+/******************************************
+ *                              
+ *          LIST ICONS RESSOURCES
+ * 
+ * ****************************************/
 .top_menu {
   width: 800px;
   display: block;
   margin: 0 auto;
 }
 
-.shipou {
-  width: 200px;
-  display: block;
-  margin: 0 auto;
-}
 
+
+/******************************************
+ *                              
+ *                  CARDS
+ * 
+ * ****************************************/
 .cards svg {
   float: left;
   width: 70px;
@@ -124,23 +191,18 @@ h2 {
   background-color: red;
 }
 
-.bitcoins_total {
-  cursor: pointer;
+.persoCardCenter {
+  display: block;
+  margin: 0 auto;
 }
 
-.bitcoins {
-  position: absolute;
-  top: 300px;
-  left: 30px;
-}
 
-.bitcoin_button_option {
-  position: absolute;
-  top: 300px;
-  left: 100px;
-  color: white;
-}
 
+/******************************************
+ *                              
+ *              EVENT CARDS
+ * 
+ * ****************************************/
 .eventCard {
   position: absolute;
   width: 360px;
@@ -177,7 +239,13 @@ h2 {
   padding: 5px 10px;
 }
 
-.chrono {
+
+/******************************************
+ *                              
+ *                CHRONO
+ * 
+ * ****************************************/
+.info {
   color: white;
   font-size: 2em;
   font-family: "Roboto";
@@ -190,13 +258,9 @@ input {
   border: 1px solid white;
   background: rgba(255, 255, 255, 0);
   color: white;
+  margin: 10px 0px;
 }
 
-.version {
-  position: absolute;
-  top: 0px;
-  right: 10px;
-}
 
 .persoCardCenter {
   display: block;

@@ -13,13 +13,14 @@
 
 <body>
   <div class="image"> <!--background image-->
-    <div class="chrono"> <!--chrono-->
+    <div class="info"> <!--chrono-->
       <span id="chronotime">0:00:00:00</span>
       <span id="yeartime"></span> <!--year time-->
       <form name="chronoForm"> <!--button start and new party-->
         <input type="button" name="startstop" value="start!" onClick="chronoStart()" />
         <input type="button" name="reset" value="Nouvelle partie" onClick="chronoReset()" />
       </form>
+      <span id="objectif">Objectifs: 200 colons</span>
     </div>
 
     <p class="absolute"></p> <!--display "gagner" and "loose"-->
