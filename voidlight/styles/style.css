@@ -85,7 +85,7 @@ h2{
 }
 
 .size_slide{
-  width: 500px;
+  width: 450px;
   display: block;
   margin: 0 auto;
 }
@@ -187,24 +187,4 @@ input{
   position: absolute;
   top: 0px;
   right: 10px;
-}
-
-
-
-
-.planet{
-  image: -1px center/cover repeat-x ;
-  index: 100;
-  position: absolute;
-  transform: translateX(-250px);
-}
-
-.hearth, .stone, .moon, .mars, .pluton, .jupiter{
-  visibility: hidden;
-  left: -70px;
-  position: absolute;
-}
-.jupiter, .mars, .pluton{
-  margin-left: -80px;
-  position: absolute;
 }

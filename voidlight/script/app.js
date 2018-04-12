@@ -295,7 +295,6 @@ function myRandom(){
         function(){
           eventFood.style.border = "3px solid white"
           eventCardFood1.style.display = "block"
-          myRandom()
         }
       )
 
