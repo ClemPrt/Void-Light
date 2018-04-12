@@ -1,12 +1,80 @@
-let population, food, water, energy, hygiene, oxygen, comfort, humor, name,
-min, medium, max, bitcoins, changeBitcoinsComfort, animate,perso, moreFood,
-moreComfort, moreEnergy, moreHygiene, moreOxygen, moreWater,
-  eventCardFood1, eventCardComfort1, eventCardOxygen1, eventCardWater1, eventCardHygiene1,
-eventFood, eventWater, eventOxygen, eventEnergy, eventHygiene, answerYesFood1, answerNoFood1, answerYesWater1, answerNoWater1,
-  answerYesComfort1, answerNoComfort1, answerYesOxygen1, answerNoOxygen1, answerYesEnergy1, answerNoEnergy1, answerYesHygiene1, answerNoHygiene1
+/* 
+  01 - Variables
+  02 - Variables initialisation
+  03 - setInterval function
+  04 - Function ressources + populations
+  05 - System cards
+  06 - Animation cards
+  07 - Animation cards + bitcoins
+  08 - Slider
+  09 - Random events
+  10 - Chrono + 
+  11 - Slider background
+*/
 
 
 
+
+/******************************************
+ *                              
+ *              VARIABLES
+ * 
+ * ****************************************/
+let population,
+food, 
+water, 
+energy, 
+hygiene, 
+oxygen, 
+comfort, 
+humor, 
+name,
+min, 
+medium, 
+max, 
+bitcoins, 
+changeBitcoinsComfort, 
+animate,
+perso, 
+moreFood,
+moreComfort, 
+moreEnergy, 
+moreHygiene, 
+moreOxygen, 
+moreWater,
+eventCardFood1, 
+eventCardComfort1, 
+eventCardOxygen1, 
+eventCardWater1, 
+eventCardHygiene1, 
+year,
+eventFood, 
+eventWater, 
+eventOxygen, 
+eventEnergy, 
+eventHygiene, 
+answerYesFood1, 
+answerNoFood1, 
+answerYesWater1, 
+answerNoWater1,
+answerYesComfort1, 
+answerNoComfort1, 
+answerYesOxygen1, 
+answerNoOxygen1, 
+answerYesEnergy1, 
+answerNoEnergy1, 
+answerYesHygiene1, 
+answerNoHygiene1, 
+answerReady
+
+
+
+
+/******************************************
+ *                              
+ *        INITIALISATION VARIABLES
+ * 
+ * ****************************************/
 function init(){
 population = 100
 food = 105
@@ -35,6 +103,7 @@ eventCardOxygen1 = document.querySelector(".eventCardOxygen1")
 eventCardComfort1 = document.querySelector(".eventCardComfort1")
 eventCardEnergy1 = document.querySelector(".eventCardEnergy1")
 eventCardHygiene1 = document.querySelector(".eventCardHygiene1")
+eventCardMusk = document.querySelector(".eventCardMusk")
 eventFood = document.querySelector(".eventFood")
 eventWater = document.querySelector(".eventWater")
 eventOxygen = document.querySelector(".eventOxygen")
@@ -53,10 +122,18 @@ answerYesEnergy1 = document.querySelector(".answerYesEnergy1")
 answerNoEnergy1 = document.querySelector(".answerNoEnergy1")
 answerYesHygiene1 = document.querySelector(".answerYesHygiene1")
 answerNoHygiene1 = document.querySelector(".answerNoHygiene1")
+answerReady = document.querySelector(".answerReady")
 }
 
 init()
 
+
+
+/******************************************
+ *                              
+ *         SETINTERVAL FUNCTION
+ * 
+ * ****************************************/
 let timer = setInterval(
   function(){
     myBitcoins()
@@ -74,14 +151,20 @@ let timer = setInterval(
 let timer_event = setInterval(
   function(){
     myRandom()
-  }, 10000
+  }, 22000
 )
 
 
+
+
+/******************************************
+ *                              
+ *    FUNCTION RESSOURCES + POPULATIONS
+ * 
+ * ****************************************/
 function myBitcoins(){
   document.querySelector('#bitcoins').innerHTML = Math.floor(bitcoins)
 }
-
 
 function myPopulation() {
   document.querySelector('#population').innerHTML = (Math.floor(population)+" colons")
@@ -101,7 +184,6 @@ function myPopulation() {
     population += 10
     console.log("200")
   }
-
 }
 
 function myFood() {
@@ -120,7 +202,7 @@ function myWater() {
   if ((water) < 1){
     water = 0
   } else if (water < 25) {
-    population -= 1
+    population -= 3
   }
 }
 
@@ -142,7 +224,7 @@ function myHumor() {
   } else if ((food || water || oxygen || hygiene) > 75){
     humor += 0.1
   } else if ((food || water || oxygen || hygiene) < 50){
-    humor -= 0.5
+    humor -= 1
   } else if ((food || water || oxygen || hygiene) < 25) {
     humor -= 10
   }
@@ -154,7 +236,7 @@ function myComfort() {
   if ((comfort) < 1){
     comfort = 0
   } else if ((food || water || oxygen || energy) > 75) {
-    comfort += 0.3
+    comfort += 1
   } else {
     comfort -= 0.5
   }
@@ -179,6 +261,12 @@ function myHygiene() {
 }
 
 
+
+/******************************************
+ *                              
+ *            SYSTEM CARDS
+ * 
+ * ****************************************/
 changeBitcoinsComfort.addEventListener(
   "click",
   function(){
@@ -242,7 +330,11 @@ moreHygiene.addEventListener(
 )
 
 
-
+/******************************************
+ *                              
+ *       ANIMATION CARDS + BITCOINS
+ * 
+ * ****************************************/
 for(let i = 0; i < animate.length; i++){
   animate[i].addEventListener(
     "click",
@@ -261,6 +353,12 @@ for(let i = 0; i < animate.length; i++){
 }
 
 
+
+/******************************************
+ *                              
+ *               SLIDER
+ * 
+ * ****************************************/
 let bigImg = document.querySelector('.primarySlide img')
 let title = document.querySelector('.primarySlide h2')
 let thumbnail = document.querySelectorAll('.slides img')
@@ -278,15 +376,13 @@ for (let i = 0; i < thumbnail.length; i++) {
   )
 }
 
-
-function loose(){
-
-}
-
-
-
+/******************************************
+ *                              
+ *             RANDOM EVENTS
+ * 
+ * ****************************************/
 function myRandom(){
-    let number = Math.floor(Math.random() * 2)
+    let number = Math.floor(Math.random() * 7)
     if (number === 1) {
      // let number2 = Math.floor(Math.random() * 2)
       eventFood.style.border = "3px solid red"
@@ -301,16 +397,16 @@ function myRandom(){
       answerYesFood1.addEventListener(
         "click",
         function(){
-          food += 20,
-          humor -= 20,
+          food += 5,
+          humor -= 5,
           eventCardFood1.style.display = "none"
         }
       )
       answerNoFood1.addEventListener(
         "click",
         function () {
-          food -= 20,
-          humor += 20,
+          food -= 5,
+          humor += 5,
           eventCardFood1.style.display = "none"
         }
       )
@@ -321,23 +417,22 @@ function myRandom(){
         function () {
           eventWater.style.border = "3px solid white"
           eventCardWater1.style.display = "block"
-          number === 0
         }
       )
 
       answerYesWater1.addEventListener(
         "click",
         function () {
-          water += 20,
-          humor -= 20,
+          water += 5,
+          humor -= 5,
           eventCardWater1.style.display = "none"
         }
       )
       answerNoWater1.addEventListener(
         "click",
         function () {
-          water -= 20,
-          comfort -= 20,
+          water -= 5,
+          comfort -= 5,
           eventCardWater1.style.display = "none"
         }
       )
@@ -355,17 +450,17 @@ function myRandom(){
       answerYesOxygen1.addEventListener(
         "click",
         function () {
-          energy -= 20,
-          humor += 20,
+          energy -= 5,
+          humor += 5,
           eventCardOxygen1.style.display = "none"
         }
       )
       answerNoOxygen1.addEventListener(
         "click",
         function () {
-          humor -= 20,
-          comfort -= 20,
-          oxygen += 20,
+          humor -= 5,
+          comfort -= 5,
+          oxygen += 5,
           eventCardOxygen1.style.display = "none"
         }
       )
@@ -383,18 +478,18 @@ function myRandom(){
       answerYesComfort1.addEventListener(
         "click",
         function () {
-          energy -= 20,
-          humor += 20,
-          comfort += 20
+          energy -= 5,
+          humor += 5,
+          comfort += 5
           eventCardComfort1.style.display = "none"
         }
       )
       answerNoComfort1.addEventListener(
         "click",
         function () {
-          energy += 20,
-          humor -= 20,
-          comfort -= 20,
+          energy += 5,
+          humor -= 5,
+          comfort -= 5,
           eventCardComfort1.style.display = "none"
         }
       )
@@ -412,17 +507,17 @@ function myRandom(){
       answerYesEnergy1.addEventListener(
         "click",
         function () {
-          water -= 20,
-          oxygene += 20,
-            eventCardEnergy1.style.display = "none"
+          water -= 5,
+          oxygen += 5,
+          eventCardEnergy1.style.display = "none"
         }
       )
       answerNoEnergy1.addEventListener(
         "click",
         function () {
-          oxygen -= 20,
-          energy += 20,
-            eventCardEnergy1.style.display = "none"
+          oxygen -= 5,
+          energy += 5,
+          eventCardEnergy1.style.display = "none"
         }
       )
     } else if (number === 6) {
@@ -439,45 +534,54 @@ function myRandom(){
       answerYesHygiene1.addEventListener(
         "click",
         function () {
-          water -= 20,
-          energy -= 20,
-          comfort += 20,
-          hygiene += 20,
-          humor += 20
+          water -= 5,
+          energy -= 5,
+          comfort += 5,
+          hygiene += 5,
+          humor += 5
           eventCardHygiene1.style.display = "none"
         }
       )
       answerNoHygiene1.addEventListener(
         "click",
         function () {
-          humor -= 20
+          humor -= 5
           eventCardHygiene1.style.display = "none"
         }
       )
     }
-
   }
 
+  answerReady.addEventListener(
+    "click",
+    function(){
+      eventCardMusk.style.display = "none"
+    }
+  )
 
   
 
 
 
 
-
-  var startTime = 0
-  var start = 0
-  var end = 0
-  var diff = 0
-  var timerID = 0
+/******************************************
+ *                              
+ *                CHRONO
+ * 
+ * ****************************************/
+  let startTime = 0
+  let start = 0
+  let end = 0
+  let diff = 0
+  let timerID = 0
 function chrono(){
     end = new Date()
 	diff = end - start
 	diff = new Date(diff)
-	var msec = diff.getMilliseconds()
-	var sec = diff.getSeconds()
-	var min = diff.getMinutes()
-	var hr = diff.getHours()-1
+	let msec = diff.getMilliseconds()
+	let sec = diff.getSeconds()
+	let min = diff.getMinutes()
+	let hr = diff.getHours()-1
 	if (min < 10){
     min = "0" + min
   }
@@ -493,6 +597,21 @@ function chrono(){
   document.getElementById("chronotime").innerHTML = hr + ":" + min + ":" + sec + ":" + msec
 	timerID = setTimeout("chrono()", 10)
 }
+
+
+function yeartime(){
+year = document.querySelector("#yeartime")
+let yearCount = 0
+year.innerHTML = yearCount + " annnée(s)"
+setInterval(
+  () => {
+    yearCount += 1
+    year.innerHTML = yearCount + " ans"
+  }, 15000
+)
+}
+
+
 function chronoStart(){
   document.chronoForm.startstop.value = "stop!"
 	document.chronoForm.startstop.onclick = chronoStop
@@ -500,7 +619,9 @@ function chronoStart(){
 	start = new Date()
   chrono()
   init()
+  yeartime()
 }
+
 function chronoContinue(){
     document.chronoForm.startstop.value = "stop!"
 	document.chronoForm.startstop.onclick = chronoStop
@@ -509,15 +630,19 @@ function chronoContinue(){
 	start = new Date(start)
 	chrono()
 }
+
 function chronoReset(){
     document.getElementById("chronotime").innerHTML = "0:00:00:000"
   start = new Date()
   init()
+  yeartime()
 }
+
 function chronoStopReset(){
     document.getElementById("chronotime").innerHTML = "0:00:00:000"
 	document.chronoForm.startstop.onclick = chronoStart
 }
+
 function chronoStop(){
     document.chronoForm.startstop.value = "start!"
 	document.chronoForm.startstop.onclick = chronoContinue
@@ -530,16 +655,17 @@ function chronoStop(){
 
 
 
-
+/******************************************
+ *                              
+ *           SLIDER BACKGROUND
+ * 
+ * ****************************************/
 let positionY = Math.ceil(Math.random() * 600)
 let speed = 1
 function increase() {
 
     speed += 0.8
     document.querySelector('.image').style.backgroundPosition = `${speed}px center`
-    document.querySelector('.current').style.transform = `translateX(${speed}px)`
-    document.querySelector('.current').style.visibility = "visible"
-    document.querySelector('.planet').style.transform = `translateY(${positionY}px)`
 }
 function scrollImg() {
     setInterval(increase, 10)
