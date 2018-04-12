@@ -424,11 +424,7 @@ function myRandom(){
           energy += 20,
             eventCardEnergy1.style.display = "none"
         }
-<<<<<<< HEAD
       )
-=======
-      ) 
->>>>>>> 37add3a1be48da9d186314c56ea12883f9e651f3
     } else if (number === 6) {
       eventHygiene.style.border = "3px solid red"
       eventHygiene.addEventListener(
@@ -523,7 +519,6 @@ function chronoStop(){
 	document.chronoForm.startstop.onclick = chronoContinue
 	document.chronoForm.reset.onclick = chronoStopReset
 	clearTimeout(timerID)
-<<<<<<< HEAD
 }
 
 
@@ -585,6 +580,3 @@ function univers() {
       }
   }
 }
-=======
-}
->>>>>>> 37add3a1be48da9d186314c56ea12883f9e651f3
