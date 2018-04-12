@@ -11,6 +11,7 @@ html{
   user-select: none;
 }
 
+<<<<<<< HEAD
 .image{
   background: url('../images/etoiles.jpg') -1px center/cover repeat-x ;
   overflow: hidden;
@@ -26,6 +27,14 @@ body{
   position: relative;
   overflow: hidden;
 
+=======
+body{
+  margin: 0;
+  background: url("../images/etoiles.jpg") no-repeat;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+>>>>>>> 37add3a1be48da9d186314c56ea12883f9e651f3
 }
 
 .clearBoth{
@@ -60,6 +69,8 @@ h2{
   text-transform: uppercase;
   letter-spacing: 1.1em;
   text-align: center;
+<<<<<<< HEAD
+=======
 }
 
 
@@ -88,10 +99,42 @@ h2{
   width: 500px;
   display: block;
   margin: 0 auto;
+>>>>>>> 37add3a1be48da9d186314c56ea12883f9e651f3
 }
 
 
 
+<<<<<<< HEAD
+#slider{
+  width: 960px;
+  margin: 0 auto;
+}
+
+.slides{
+  list-style: none;
+  text-align: center;
+  padding: 0;
+}
+
+.slides li{
+  display: inline-block;
+  margin: 20px 20px 0px 20px;
+}
+
+.slides li img{
+  border: 3px solid white;
+}
+
+.size_slide{
+  width: 500px;
+  display: block;
+  margin: 0 auto;
+}
+
+
+
+=======
+>>>>>>> 37add3a1be48da9d186314c56ea12883f9e651f3
 
 
 .item{
@@ -189,6 +232,7 @@ input{
   right: 10px;
 }
 
+<<<<<<< HEAD
 
 
 
@@ -208,3 +252,5 @@ input{
   margin-left: -80px;
   position: absolute;
 }
+=======
+>>>>>>> 37add3a1be48da9d186314c56ea12883f9e651f3
