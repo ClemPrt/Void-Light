@@ -1,536 +1,712 @@
-let waitingButton = document.querySelector('#waitingClickButton'), start , main = document.querySelector('main'), logo = document.querySelector('#logo'), nav, accueil, nouveaute,imgFirstDivNav,forum,support, playButton, body = document.querySelector('body'), firstDivNav, secondDivNav, imgSecondDivNav, arrowDown , title = document.querySelector('#title'), imgSponsorsArrowUp, sponsorsTitle,fisrtRowSponsors,secondRowSponsors, spaceX, cocaCola, atom, hetic, ubisoft, independantGameFestival, parisGamesWeek, wootBox,sponsorsContainer, firstRowFooter,secondRowFooter,footer,contact, mentionsLegales,equipe,twitch,youtube,facebook,twitter,mainPageTitle,littleTitle,historyTitle,historyText,continueButton,loginPreButton,form,formInput,formTextArea,formSendButton,loginPreButtonContactPage,loginDiv,loginForm,user,pass,loginButton,forgetUser,or,newUser,divNewsContainer,newsTitle,close,firstDivNews,secondDivNews, thirdDivNews,firstImgNews,secondImgNews,thirdImgNews,firstVersionNews,secondVerseionNews,thirdVersionNews,firstDate,secondDate,thirdDate,firstDetail,secondDetail,thirdDetail,supportTitle
+/* 
+  01 - Variables
+  02 - Variables initialisation
+  03 - setInterval function
+  04 - Function ressources + populations
+  05 - System cards
+  06 - Animation cards
+  07 - Animation cards + bitcoins
+  08 - Slider
+  09 - Random events
+  10 - Chrono + 
+  11 - Slider background
+*/
 
-// Lancement de la fonction permetant le clignottement
-start = window.setInterval(startBlink, 800)
 
-// Lancement de la fonction de base
-afterFirstClick()
 
-// Fonction qui gere le clignotement
-function startBlink(){
-  if (waitingButton.style.visibility == 'visible'){
-    waitingButton.style.visibility='hidden'
+
+/******************************************
+ *                              
+ *              VARIABLES
+ * 
+ * ****************************************/
+let population,
+food, 
+water, 
+energy, 
+hygiene, 
+oxygen, 
+comfort, 
+humor, 
+name,
+min, 
+medium, 
+max, 
+bitcoins, 
+changeBitcoinsComfort, 
+animate,
+perso, 
+moreFood,
+moreComfort, 
+moreEnergy, 
+moreHygiene, 
+moreOxygen, 
+moreWater,
+eventCardFood1, 
+eventCardComfort1, 
+eventCardOxygen1, 
+eventCardWater1, 
+eventCardHygiene1, 
+year,
+eventFood, 
+eventWater, 
+eventOxygen, 
+eventEnergy, 
+eventHygiene, 
+answerYesFood1, 
+answerNoFood1, 
+answerYesWater1, 
+answerNoWater1,
+answerYesComfort1, 
+answerNoComfort1, 
+answerYesOxygen1, 
+answerNoOxygen1, 
+answerYesEnergy1, 
+answerNoEnergy1, 
+answerYesHygiene1, 
+answerNoHygiene1, 
+answerReady
+
+
+
+
+/******************************************
+ *                              
+ *        INITIALISATION VARIABLES
+ * 
+ * ****************************************/
+function init(){
+population = 100
+food = 105
+water = 115
+energy = 120
+hygiene = 110
+oxygen = 130
+comfort = 80
+humor = 75
+min = 25
+medium = 50
+max = 75
+bitcoins = 30
+changeBitcoinsComfort = document.querySelector('.bitcoins_total')
+animate = document.querySelectorAll('.animate')
+perso = document.querySelectorAll('.perso')
+moreFood = document.querySelector('.moreFood')
+moreWater = document.querySelector('.moreWater')
+moreOxygen = document.querySelector('.moreOxygen')
+moreEnergy = document.querySelector('.moreEnergy')
+moreHygiene = document.querySelector('.moreHygiene')
+moreComfort = document.querySelector('.moreComfort')
+eventCardFood1 = document.querySelector(".eventCardFood1")
+eventCardWater1 = document.querySelector(".eventCardWater1")
+eventCardOxygen1 = document.querySelector(".eventCardOxygen1")
+eventCardComfort1 = document.querySelector(".eventCardComfort1")
+eventCardEnergy1 = document.querySelector(".eventCardEnergy1")
+eventCardHygiene1 = document.querySelector(".eventCardHygiene1")
+eventCardMusk = document.querySelector(".eventCardMusk")
+eventFood = document.querySelector(".eventFood")
+eventWater = document.querySelector(".eventWater")
+eventOxygen = document.querySelector(".eventOxygen")
+eventComfort = document.querySelector(".eventComfort")
+eventEnergy = document.querySelector(".eventEnergy")
+eventHygiene = document.querySelector(".eventHygiene")
+answerYesFood1 = document.querySelector(".answerYesFood1")
+answerNoFood1 = document.querySelector(".answerNoFood1")
+answerYesWater1 = document.querySelector(".answerYesWater1")
+answerNoWater1 = document.querySelector(".answerNoWater1")
+answerYesOxygen1 = document.querySelector(".answerYesOxygen1")
+answerNoOxygen1 = document.querySelector(".answerNoOxygen1")
+answerYesComfort1 = document.querySelector(".answerYesComfort1")
+answerNoComfort1 = document.querySelector(".answerNoComfort1")
+answerYesEnergy1 = document.querySelector(".answerYesEnergy1")
+answerNoEnergy1 = document.querySelector(".answerNoEnergy1")
+answerYesHygiene1 = document.querySelector(".answerYesHygiene1")
+answerNoHygiene1 = document.querySelector(".answerNoHygiene1")
+answerReady = document.querySelector(".answerReady")
+}
+
+init()
+
+
+
+/******************************************
+ *                              
+ *         SETINTERVAL FUNCTION
+ * 
+ * ****************************************/
+let timer = setInterval(
+  function(){
+    myBitcoins()
+    myPopulation()
+    myFood()
+    myWater()
+    myOxygen()
+    myEnergy()
+    myHygiene()
+    myComfort()
+    myHumor()
+  },700
+)
+
+let timer_event = setInterval(
+  function(){
+    myRandom()
+  }, 22000
+)
+
+
+
+
+/******************************************
+ *                              
+ *    FUNCTION RESSOURCES + POPULATIONS
+ * 
+ * ****************************************/
+function myBitcoins(){
+  document.querySelector('#bitcoins').innerHTML = Math.floor(bitcoins)
+}
+
+function myPopulation() {
+  document.querySelector('#population').innerHTML = (Math.floor(population)+" colons")
+  if (population < 1) {
+    let absolute = document.querySelector('.absolute').innerHTML = "PERDU"
+  } else if (population >= 200) {
+    absolute = document.querySelector('.absolute').innerHTML = "BRAVO"
+  } else if ((food || water) > 100) {
+    population += 0.3
+  } else if ((food || water) > 150) {
+    population += 3
+    console.log("ALLEZ")
+  } else if ((food || water) > 175) {
+    population += 5
+    console.log("175")
+  } else if ((food || water) > 200) {
+    population += 10
+    console.log("200")
   }
-  else{
-    waitingButton.style.visibility='visible'
+}
+
+function myFood() {
+  document.querySelector('#food').innerHTML = (Math.floor(food -= (population/2.5) / 100)+"%")
+
+  if ((food) < 1){
+    food = 0
+  } else if (food < 25){
+    population -= 1
   }
 }
 
-// Fonction qui gère l'arret du clignotement (inutile ici)
-// function stopBlink(){
-//   clearInterval(start)
-// }
+function myWater() {
+  document.querySelector('#water').innerHTML = (Math.floor(water -= (population/2.5) / 100) + "%")
 
-// Fonction qui gere la creation de la page d'acceuil et de toute ses pages annexes
+  if ((water) < 1){
+    water = 0
+  } else if (water < 25) {
+    population -= 3
+  }
+}
 
-function afterFirstClick(){
-  waitingButton.addEventListener(
+function myOxygen() {
+  document.querySelector('#oxygen').innerHTML = (Math.floor(oxygen -= (population / 2) / 100) + "%")
+
+  if ((oxygen) < 1){
+    oxygen = 0
+  } else if (oxygen < 15){
+    population -= 10
+  }
+}
+
+function myHumor() {
+  document.querySelector('#humor').innerHTML = (Math.floor(humor) + "%")
+
+  if ((humor) < 1){
+    humor = 0
+  } else if ((food || water || oxygen || hygiene) > 75){
+    humor += 0.1
+  } else if ((food || water || oxygen || hygiene) < 50){
+    humor -= 1
+  } else if ((food || water || oxygen || hygiene) < 25) {
+    humor -= 10
+  }
+}
+
+function myComfort() {
+  document.querySelector('#comfort').innerHTML = (Math.floor(comfort -= (population / 8) / 200) + "%")
+
+  if ((comfort) < 1){
+    comfort = 0
+  } else if ((food || water || oxygen || energy) > 75) {
+    comfort += 1
+  } else {
+    comfort -= 0.5
+  }
+}
+
+function myEnergy() {
+  document.querySelector('#energy').innerHTML = (Math.floor(energy -= (population / 1.9) / 100) + "%")
+
+if ((energy) < 1){
+  energy = 1
+} else if (energy < 25){
+  food -= 1, water -= 1, oxygen -= 5
+}
+}
+
+function myHygiene() {
+  document.querySelector('#hygiene').innerHTML = (Math.floor(hygiene -= (population / 4) / 100) + "%")
+
+  if ((hygiene) < 1){
+    hygiene = 0
+  }
+}
+
+
+
+/******************************************
+ *                              
+ *            SYSTEM CARDS
+ * 
+ * ****************************************/
+changeBitcoinsComfort.addEventListener(
+  "click",
+  function(){
+    if(comfort > 10){
+      comfort -= 10
+      bitcoins += 5
+    }
+  }
+)
+
+
+moreFood.addEventListener(
+  "click",
+  function(){
+    if(bitcoins > 5){
+    food += 30
+    bitcoins -= 5
+    }
+  }
+)
+
+moreWater.addEventListener(
+  "click",
+  function () {
+    if (bitcoins > 5) {
+      water += 30
+      bitcoins -= 5
+    }
+  }
+)
+
+moreOxygen.addEventListener(
+  "click",
+  function () {
+    if (bitcoins > 5) {
+      oxygen += 30
+      bitcoins -= 5
+    }
+  }
+)
+
+
+moreEnergy.addEventListener(
+  "click",
+  function () {
+    if (bitcoins > 5) {
+      energy += 30
+      bitcoins -= 5
+    }
+  }
+)
+
+moreHygiene.addEventListener(
+  "click",
+  function () {
+    if (bitcoins > 0) {
+      hygiene += 30
+      bitcoins -= 5
+    }
+  }
+)
+
+
+/******************************************
+ *                              
+ *       ANIMATION CARDS + BITCOINS
+ * 
+ * ****************************************/
+for(let i = 0; i < animate.length; i++){
+  animate[i].addEventListener(
+    "click",
+      function(){
+        animate[i].animate([
+          // keyframes
+          { transform: 'translateY(0px)' },
+          { transform: 'translateY(-10px)' },
+          { transform: 'translateY(0px)' },
+        ], {
+            // timing options
+            duration: 250,
+          });
+      }
+  )
+}
+
+
+
+/******************************************
+ *                              
+ *               SLIDER
+ * 
+ * ****************************************/
+let bigImg = document.querySelector('.primarySlide img')
+let title = document.querySelector('.primarySlide h2')
+let thumbnail = document.querySelectorAll('.slides img')
+
+for (let i = 0; i < thumbnail.length; i++) {
+  thumbnail[i].addEventListener(
     'click',
-    function(){
-      // supressions d'elements non voulu
-      main.removeChild(logo)
-      main.removeChild(waitingButton)
-
-      // Creation de tous les elements de la page d'acceuil
-
-      // ELEMENTS A CREER
-      // <div id="playButton">JOUER</div>
-      // <img src="./images/loginPreButton.png" id="loginPreButton" alt="Bouton d'acces pour se connecter">
-      // <nav>
-      //   <a href="#">Accueil</a>
-      //   <a href="#">Nouveauté</a>
-      //   <img src="./images/logoFooter.png" alt="Logo">
-      //   <a href="#">Forum</a>
-      //   <a href="#">Support</a>
-      //   <div id="moreButton"><img src="./images/arrowDown.png" alt="Fleches vers le bas pour plus d'option"></div>
-      // </nav>
-
-      playButton = document.createElement('div')
-      playButton.innerHTML = 'JOUER'
-      playButton.setAttribute('id','playButton')
-      firstDivNav = document.createElement('div')
-      nav = document.createElement('nav')
-      nav.setAttribute('id','nav')
-      accueil = document.createElement('a')
-      accueil.innerHTML = 'Accueil'
-      accueil.classList.add('selected')
-      nouveaute = document.createElement('a')
-      nouveaute.innerHTML = 'Nouveauté'
-      forum = document.createElement('a')
-      forum.innerHTML = 'Forum'
-      support = document.createElement('a')
-      support.innerHTML = 'Support'
-      imgFirstDivNav = document.createElement('img')
-      imgFirstDivNav.setAttribute('src','./images/logoFooter.png')
-      imgFirstDivNav.setAttribute('alt','Logo')
-      secondDivNav = document.createElement('div')
-      secondDivNav.setAttribute('id','moreButton')
-      imgSecondDivNav = document.createElement('img')
-      imgSecondDivNav.setAttribute('src','./images/arrowDown.png')
-      imgSecondDivNav.setAttribute('alt','Fleches vers le bas pour plus d\'option')
-      loginPreButton = document.createElement('img')
-      loginPreButton.classList.add('loginPreButton')
-      loginPreButton.setAttribute('src','./images/loginPreButton.png')
-      loginPreButton.setAttribute('alt','Bouton d\'acces pour se connecter')
-
-      // Mise en place de tous les elements
-      main.appendChild(playButton)
-      main.appendChild(loginPreButton)
-      body.appendChild(nav)
-      nav.appendChild(firstDivNav)
-      nav.appendChild(secondDivNav)
-      firstDivNav.appendChild(accueil)
-      firstDivNav.appendChild(nouveaute)
-      firstDivNav.appendChild(imgFirstDivNav)
-      firstDivNav.appendChild(forum)
-      firstDivNav.appendChild(support)
-      secondDivNav.appendChild(imgSecondDivNav)
-
-      // Fonction qui creer la page sponsors
-      moreOptions()
-      // Fonction qui creer la page Histoire
-      showHistoryAfterClickingPlay()
-      // Fontction qui creer le pop up de support
-      supportPage()
-      // Fontction qui creer le pop up de login
-      loginButtonEvent()
-      // Fontction qui creer le pop up des nouveautées.
-      newsPage()
+    function () {
+      let altTxt = this.getAttribute('alt')
+      let srcBigImg = this.getAttribute('data-srcBigImg')
+      bigImg.setAttribute('alt', altTxt)
+      bigImg.setAttribute('src', srcBigImg)
+      title.innerHTML = altTxt
     }
   )
 }
 
-function moreOptions(){
-  // Evenements pour aller vers la page sponsors depuis la page d'accueil
-  arrowDown = document.querySelector('#moreButton')
-  arrowDown.addEventListener(
-    'click',
-    function(){
-
-      // Supressions des elements non voulu
-      main.removeChild(document.querySelector('#title'))
-      main.removeChild(playButton)
-      body.removeChild(nav)
-      main.removeChild(loginPreButton)
-
-      // Creations des nouveau elements de la page sponsors
-
-      // A CREER :
-
-      // <img id="arrowUp" src="./images/arrowUp.png" alt="Fleches vers le haut pour revenir au menu">
-      // <div id="sponsors">
-      //   <h1>Sponsors</h1>
-      //   <div id="fisrtRowSponsors">
-      //     <img class = "twoCol" src="./images/spaceX.png" alt="Images Du Sponsors : Space X ">
-      //     <img class = "oneCol" src="./images/cocaCola.png" alt="Images Du Sponsors : Coca Cola">
-      //     <img class = "oneCol" src="./images/atom.png" alt="Images Du Sponsors : Atom">
-      //     <img class = "twoCol" src="./images/Hetic.png" alt="Images Du Sponsors : Hetic">
-      //   </div>
-      //   <div id="secondRowSponsors">
-      //     <img class = "twoCol" src="./images/ubisoft.png" alt="Images Du Sponsors : Ubisoft">
-      //     <img class = "oneCol" src="./images/independantGameFestival.png" alt="Images Du Sponsors : Independant Game Festival">
-      //     <img class = "oneCol" src="./images/ParisGamesWeek.png" alt="Images Du Sponsors : Paris Game Week">
-      //     <img class = "twoCol" src="./images/Wootbox.png" alt="Images Du Sponsors : WootBox">
-      //   </div>
-      // </div>
-      // <footer>
-      //   <div id="firstRow">
-      //     <a href="#">Contact</a>
-      //     <a href="#">Mentions Légales</a>
-      //     <a href="#">L'équipe</a>
-      //   </div>
-      //   <div id="secondRow">
-      //     <a href="#"><img src="./images/twitch.png" alt="Twitch Logo"></a>
-      //     <a href="#"><img src="./images/youtube.png" alt="Youtube Logo"></a>
-      //     <a href="#"><img src="./images/facebook.png" alt="Facebook Logo"></a>
-      //     <a href="#"><img src="./images/twitter.png" alt="Twitter Logo"></a>
-      //   </div>
-      // </footer>
-
-      imgSponsorsArrowUp = document.createElement('img')
-      imgSponsorsArrowUp.setAttribute('id','arrowUp')
-      imgSponsorsArrowUp.setAttribute('src','./images/arrowUp.png')
-      imgSponsorsArrowUp.setAttribute('alt','Fleches vers le haut pour revenir au menu')
-      sponsorsContainer = document.createElement('div')
-      sponsorsContainer.setAttribute('id','sponsors')
-      sponsorsTitle = document.createElement('h1')
-      sponsorsTitle.innerHTML = 'Sponsors'
-      fisrtRowSponsors= document.createElement('div')
-      fisrtRowSponsors.setAttribute('id','fisrtRowSponsors')
-      spaceX = document.createElement('img')
-      spaceX.setAttribute('src','./images/spaceX.png')
-      spaceX.setAttribute('alt','Images Du Sponsors : spaceX')
-      spaceX.classList.add('twoCol')
-      cocaCola = document.createElement('img')
-      cocaCola.setAttribute('src','./images/cocaCola.png')
-      cocaCola.setAttribute('alt','Images Du Sponsors :cocaCola')
-      cocaCola.classList.add('oneCol')
-      atom = document.createElement('img')
-      atom.setAttribute('src','./images/atom.png')
-      atom.setAttribute('alt','Images Du Sponsors : atom')
-      atom.classList.add('oneCol')
-      hetic = document.createElement('img')
-      hetic.setAttribute('src','./images/Hetic.png')
-      hetic.setAttribute('alt','Images Du Sponsors : hetic')
-      hetic.classList.add('twoCol')
-      secondRowSponsors= document.createElement('div')
-      secondRowSponsors.setAttribute('id','secondRowSponsors')
-      ubisoft = document.createElement('img')
-      ubisoft.setAttribute('src','./images/ubisoft.png')
-      ubisoft.setAttribute('alt','Images Du Sponsors : ubisoft')
-      ubisoft.classList.add('twoCol')
-      independantGameFestival = document.createElement('img')
-      independantGameFestival.setAttribute('src','./images/independantGameFestival.png')
-      independantGameFestival.setAttribute('alt','Images Du Sponsors : independant Game Festival')
-      independantGameFestival.classList.add('oneCol')
-      parisGamesWeek = document.createElement('img')
-      parisGamesWeek.setAttribute('src','./images/ParisGamesWeek.png')
-      parisGamesWeek.setAttribute('alt','Images Du Sponsors : Paris Games Week.png')
-      parisGamesWeek.classList.add('oneCol')
-      wootBox = document.createElement('img')
-      wootBox.setAttribute('src','./images/Wootbox.png')
-      wootBox.setAttribute('alt','Images Du Sponsors :Wootbox')
-      wootBox.classList.add('twoCol')
-      footer = document.createElement('footer')
-      firstRowFooter= document.createElement('div')
-      firstRowFooter.setAttribute('id','firstRow')
-      contact = document.createElement('a')
-      contact.innerHTML='Contact'
-      contact.setAttribute('href','#')
-      mentionsLegales = document.createElement('a')
-      mentionsLegales.innerHTML='Mentions Légales'
-      mentionsLegales.setAttribute('href','#')
-      equipe = document.createElement('a')
-      equipe.innerHTML='L\'équipe'
-      equipe.setAttribute('href','#')
-      secondRowFooter= document.createElement('div')
-      secondRowFooter.setAttribute('id','secondRow')
-      twitch =document.createElement('a')
-      twitch.innerHTML='<img src="./images/twitch.png" alt="Twitch Logo">'
-      twitch.setAttribute('href','#')
-      youtube =document.createElement('a')
-      youtube.innerHTML='<img src="./images/youtube.png" alt="Youtube Logo">'
-      youtube.setAttribute('href','#')
-      facebook =document.createElement('a')
-      facebook.innerHTML='<img src="./images/facebook.png" alt="Facebook Logo">'
-      facebook.setAttribute('href','#')
-      twitter =document.createElement('a')
-      twitter.innerHTML='<img src="./images/twitter.png" alt="Twitter Logo">'
-      twitter.setAttribute('href','#')
-
-      // Injection des nouveaux elements
-      main.appendChild(imgSponsorsArrowUp)
-      main.appendChild(sponsorsContainer)
-      sponsorsContainer.appendChild(sponsorsTitle)
-      sponsorsContainer.appendChild(fisrtRowSponsors)
-      fisrtRowSponsors.appendChild(spaceX)
-      fisrtRowSponsors.appendChild(cocaCola)
-      fisrtRowSponsors.appendChild(atom)
-      fisrtRowSponsors.appendChild(hetic)
-      sponsorsContainer.appendChild(secondRowSponsors)
-      secondRowSponsors.appendChild(ubisoft)
-      secondRowSponsors.appendChild(independantGameFestival)
-      secondRowSponsors.appendChild(parisGamesWeek)
-      secondRowSponsors.appendChild(wootBox)
-      main.appendChild(footer)
-      footer.appendChild(firstRowFooter)
-      firstRowFooter.appendChild(contact)
-      firstRowFooter.appendChild(mentionsLegales)
-      firstRowFooter.appendChild(equipe)
-      footer.appendChild(secondRowFooter)
-      secondRowFooter.appendChild(twitch)
-      secondRowFooter.appendChild(youtube)
-      secondRowFooter.appendChild(facebook)
-      secondRowFooter.appendChild(twitter)
-
-      // Evenements Pour revenir sur la page d'accueil
-      imgSponsorsArrowUp =document.querySelector('#arrowUp')
-      imgSponsorsArrowUp.addEventListener(
-        'click',
+/******************************************
+ *                              
+ *             RANDOM EVENTS
+ * 
+ * ****************************************/
+function myRandom(){
+    let number = Math.floor(Math.random() * 7)
+    if (number === 1) {
+     // let number2 = Math.floor(Math.random() * 2)
+      eventFood.style.border = "3px solid red"
+      eventFood.addEventListener(
+        "click",
         function(){
-          // Supressions des elements non voulu
-          main.removeChild(imgSponsorsArrowUp)
-          main.removeChild(sponsorsContainer)
-          main.removeChild(footer)
-
-          //Creation des elements manquant de la page D'accueil
-          mainPageTitle = document.createElement('div')
-          mainPageTitle.setAttribute('id','title')
-          mainPageTitle.innerHTML='Void Light'
-          // Injection des elements
-          main.appendChild(mainPageTitle)
-          main.appendChild(playButton)
-          main.appendChild(loginPreButton)
-          body.appendChild(nav)
-          nav.appendChild(firstDivNav)
-          nav.appendChild(secondDivNav)
-          firstDivNav.appendChild(accueil)
-          firstDivNav.appendChild(nouveaute)
-          firstDivNav.appendChild(imgFirstDivNav)
-          firstDivNav.appendChild(forum)
-          firstDivNav.appendChild(support)
-          secondDivNav.appendChild(imgSecondDivNav)
+          eventFood.style.border = "3px solid white"
+          eventCardFood1.style.display = "block"
         }
       )
-    }
-  )
-}
 
-// Fonction qui gere l'evenement une fois que l'on a clicker sur le bouton jouer
-function showHistoryAfterClickingPlay(){
-  playButton.addEventListener(
-    'click',
-    function(){
-
-      // Supressions des elements non voulu
-      main.removeChild(document.querySelector('#title'))
-      main.removeChild(playButton)
-      body.removeChild(nav)
-      main.removeChild(loginPreButton)
-
-      // Creations des nouveaux elements
-      littleTitle = document.createElement('div')
-      littleTitle.innerHTML = 'Void Light'
-      littleTitle.setAttribute('id','littleTitle')
-      historyTitle =document.createElement('h1')
-      historyTitle.innerHTML='Histoire'
-      historyTitle.setAttribute('id','historyTitle')
-      historyText = document.createElement('div')
-      historyText.innerHTML = 'En 2353, l’Homme qui a colonisé le système solaire pour répondre à un appétit croissant, doit de nouveau coloniser. L’histoire se centre sur le vaisseau Agatha, parti en exploration avec à son bord une centaine de colon. Vous, vous êtes le commandant de ce vaisseau dont vous devez assurer sa gestion, le sort et l’avenir de ces personnes dépend de vous.'
-      historyText.setAttribute('id','historyText')
-      continueButton = document.createElement('div')
-      continueButton.innerHTML='Continuer >'
-      continueButton.setAttribute('id','continueButton')
-      continueButton.setAttribute('href', 'pages/game.html')
-
-      //Injections des nouveaux elements
-      main.appendChild(littleTitle)
-      main.appendChild(historyTitle)
-      main.appendChild(historyText)
-      main.appendChild(continueButton)
-    }
-  )
-}
-
-// Fonction qui gere le pop up de support
-function supportPage(){
-  // Evenement qui gere la creation du popup support
-  support.addEventListener(
-    'click',
-    function(e){
-      //Mise le fond en opacité
-      main.classList.add('opacity')
-      nav.classList.add('opacity')
-
-      // Changement du bouton selectionné dans la nav
-      accueil.classList.remove('selected')
-      support.classList.add('selected')
-
-      // Creations des nouveaux elements
-      form= document.createElement('form')
-      form.setAttribute('action','index.html')
-      form.setAttribute('method','post')
-      form.setAttribute('id','contactform')
-      formInput = document.createElement('input')
-      formInput.setAttribute('type','text')
-      formInput.setAttribute('name','subject')
-      formInput.setAttribute('placeholder','Objet de la requête')
-      formTextArea = document.createElement('textarea')
-      formTextArea.setAttribute('name','description')
-      formTextArea.innerHTML='Description de la requête'
-      formSendButton=document.createElement('button')
-      formSendButton.setAttribute('type','submit')
-      formSendButton.innerHTML='Envoyer'
-      supportTitle=document.createElement('div')
-      supportTitle.innerHTML='Formulaire de Contact'
-      supportTitle.classList.add('supportTitle')
-
-      // Injections des nouveaux elements
-      body.appendChild(form)
-      form.appendChild(supportTitle)
-      form.appendChild(formInput)
-      form.appendChild(formTextArea)
-      form.appendChild(formSendButton)
-
-      // Evenement qui gere la fermeture du pop up
-      formSendButton.addEventListener(
-        'click',
-        function(e){
-          e.preventDefault()
-          body.removeChild(form)
-          // remise en place de l'opacité normale
-          main.classList.remove('opacity')
-          nav.classList.remove('opacity')
-          // remise en place de la selection du bouton dans la nav
-          support.classList.remove('selected')
-          accueil.classList.add('selected')
-        }
-      )
-    }
-  )
-}
-
-// Fonction qui gere le pop up de login
-function loginButtonEvent(){
-  // Evenement qui gere la creation du pop up
-  loginPreButton.addEventListener(
-    'click',
-    function(){
-      // Changement de l'opacité
-      main.classList.add('opacity')
-      nav.classList.add('opacity')
-
-      // Creations des elements
-      loginDiv=document.createElement('div')
-      loginDiv.setAttribute('id','loginDiv')
-      loginForm=document.createElement('form')
-      loginForm.setAttribute('action','login.html')
-      loginForm.setAttribute('method','post')
-      loginForm.setAttribute('id','login')
-      user = document.createElement('input')
-      user.setAttribute('type','text')
-      user.setAttribute('name','user')
-      user.setAttribute('placeholder','Identifiant')
-      user.setAttribute('id','user')
-      pass = document.createElement('input')
-      pass.setAttribute('type','text')
-      pass.setAttribute('name','pass')
-      pass.setAttribute('placeholder','Mot De Passe')
-      pass.setAttribute('id','pass')
-      loginButton=document.createElement('img')
-      loginButton.setAttribute('src','./images/lock.png')
-      loginButton.setAttribute('alt','Bouton Pour Envoyer La demande de connexion')
-      forgetUser  = document.createElement('div')
-      forgetUser.classList.add('text')
-      forgetUser.innerHTML='Mot De Passe Oublié ?'
-      or = document.createElement('div')
-      or.classList.add('text')
-      or.innerHTML='ou'
-      newUser = document.createElement('div')
-      newUser.classList.add('text')
-      newUser.innerHTML='Nouveau Voyageur'
-      accueil.classList.remove('selected')
-
-      // Injections des elements
-      body.appendChild(loginDiv)
-      loginDiv.appendChild(loginForm)
-      loginForm.appendChild(user)
-      loginForm.appendChild(pass)
-      loginForm.appendChild(loginButton)
-      loginForm.appendChild(forgetUser)
-      loginForm.appendChild(or)
-      loginForm.appendChild(newUser)
-
-      // Evenements qui gere la fermeture du pop up
-      loginButton.addEventListener(
-        'click',
+      answerYesFood1.addEventListener(
+        "click",
         function(){
-          body.removeChild(loginDiv)
-          // Remise en place de l'opacitée
-          main.classList.remove('opacity')
-          nav.classList.remove('opacity')
-          // Remise en place de la selection dans la nav
-          accueil.classList.add('selected')
+          food += 5,
+          humor -= 5,
+          eventCardFood1.style.display = "none"
+        }
+      )
+      answerNoFood1.addEventListener(
+        "click",
+        function () {
+          food -= 5,
+          humor += 5,
+          eventCardFood1.style.display = "none"
+        }
+      )
+    } else if (number === 2)  {
+      eventWater.style.border = "3px solid red"
+      eventWater.addEventListener(
+        "click",
+        function () {
+          eventWater.style.border = "3px solid white"
+          eventCardWater1.style.display = "block"
+        }
+      )
+
+      answerYesWater1.addEventListener(
+        "click",
+        function () {
+          water += 5,
+          humor -= 5,
+          eventCardWater1.style.display = "none"
+        }
+      )
+      answerNoWater1.addEventListener(
+        "click",
+        function () {
+          water -= 5,
+          comfort -= 5,
+          eventCardWater1.style.display = "none"
+        }
+      )
+    } else if (number === 3) {
+      eventOxygen.style.border = "3px solid red"
+      eventOxygen.addEventListener(
+        "click",
+        function () {
+          eventOxygen.style.border = "3px solid white"
+          eventCardOxygen1.style.display = "block"
+          number === 0
+        }
+      )
+
+      answerYesOxygen1.addEventListener(
+        "click",
+        function () {
+          energy -= 5,
+          humor += 5,
+          eventCardOxygen1.style.display = "none"
+        }
+      )
+      answerNoOxygen1.addEventListener(
+        "click",
+        function () {
+          humor -= 5,
+          comfort -= 5,
+          oxygen += 5,
+          eventCardOxygen1.style.display = "none"
+        }
+      )
+    } else if (number === 4) {
+      eventComfort.style.border = "3px solid red"
+      eventComfort.addEventListener(
+        "click",
+        function () {
+          eventComfort.style.border = "3px solid white"
+          eventCardComfort1.style.display = "block"
+          number === 0
+        }
+      )
+
+      answerYesComfort1.addEventListener(
+        "click",
+        function () {
+          energy -= 5,
+          humor += 5,
+          comfort += 5
+          eventCardComfort1.style.display = "none"
+        }
+      )
+      answerNoComfort1.addEventListener(
+        "click",
+        function () {
+          energy += 5,
+          humor -= 5,
+          comfort -= 5,
+          eventCardComfort1.style.display = "none"
+        }
+      )
+    } else if (number === 5){
+      eventEnergy.style.border = "3px solid red"
+      eventEnergy.addEventListener(
+        "click",
+        function () {
+          eventEnergy.style.border = "3px solid white"
+          eventCardEnergy1.style.display = "block"
+          number === 0
+        }
+      )
+
+      answerYesEnergy1.addEventListener(
+        "click",
+        function () {
+          water -= 5,
+          oxygen += 5,
+          eventCardEnergy1.style.display = "none"
+        }
+      )
+      answerNoEnergy1.addEventListener(
+        "click",
+        function () {
+          oxygen -= 5,
+          energy += 5,
+          eventCardEnergy1.style.display = "none"
+        }
+      )
+    } else if (number === 6) {
+      eventHygiene.style.border = "3px solid red"
+      eventHygiene.addEventListener(
+        "click",
+        function () {
+          eventHygiene.style.border = "3px solid white"
+          eventCardHygiene1.style.display = "block"
+          number === 0
+        }
+      )
+
+      answerYesHygiene1.addEventListener(
+        "click",
+        function () {
+          water -= 5,
+          energy -= 5,
+          comfort += 5,
+          hygiene += 5,
+          humor += 5
+          eventCardHygiene1.style.display = "none"
+        }
+      )
+      answerNoHygiene1.addEventListener(
+        "click",
+        function () {
+          humor -= 5
+          eventCardHygiene1.style.display = "none"
         }
       )
     }
+  }
+
+  answerReady.addEventListener(
+    "click",
+    function(){
+      eventCardMusk.style.display = "none"
+    }
   )
+
+  
+
+
+
+
+/******************************************
+ *                              
+ *                CHRONO
+ * 
+ * ****************************************/
+  let startTime = 0
+  let start = 0
+  let end = 0
+  let diff = 0
+  let timerID = 0
+function chrono(){
+    end = new Date()
+	diff = end - start
+	diff = new Date(diff)
+	let msec = diff.getMilliseconds()
+	let sec = diff.getSeconds()
+	let min = diff.getMinutes()
+	let hr = diff.getHours()-1
+	if (min < 10){
+    min = "0" + min
+  }
+  if (sec < 10){
+    sec = "0" + sec
+  }
+  if(msec < 10){
+    msec = "00" + msec
+  }
+  else if(msec < 100){
+    msec = "0" + msec
+  }
+  document.getElementById("chronotime").innerHTML = hr + ":" + min + ":" + sec + ":" + msec
+	timerID = setTimeout("chrono()", 10)
 }
 
-// Fonction qui gere le pop up de nouveautées
-function newsPage(){
-  // Evenements qui gere la creation du pop up nouveautée
-  nouveaute.addEventListener(
-    'click',
-    function(){
-      // changement de l'opacité
-      main.classList.add('opacity')
-      nav.classList.add('opacity')
-      // changement de la selection du bouton de nav
-      accueil.classList.remove('selected')
-      nouveaute.classList.add('selected')
-      // Creations des elements
-      divNewsContainer=document.createElement('div')
-      divNewsContainer.classList.add('news')
-      newsTitle = document.createElement('div')
-      newsTitle.innerHTML='Nouveautées'
-      newsTitle.classList.add('newsTitle')
-      close = document.createElement('img')
-      close.setAttribute('src','./images/close.png')
-      close.setAttribute('id','close')
-      close.setAttribute('alt','Bouton pour fermer la fenetre')
-      firstDivNews = document.createElement('div')
-      firstDivNews.classList.add('news1')
-      firstDivNews.classList.add('left')
-      firstImgNews = document.createElement('img')
-      firstImgNews.classList.add('newsImgLeft')
-      firstImgNews.setAttribute('src','./images/news1.png')
-      firstImgNews.setAttribute('alt','Images des Nouveautées')
-      firstVersionNews = document.createElement('h2')
-      firstVersionNews.innerHTML='MAJ 2.0.6'
-      firstDate = document.createElement('h3')
-      firstDate.innerHTML='Avril 2018 :'
-      firstDetail = document.createElement('p')
-      firstDetail.innerHTML='- Ajout de nouveaux serveurs pour pouvoir vous accueillirs tous et supressions despremiers qui ne sont pas assez optimisé.<br>- Correction du glitch qui permettait de jouer à The Witcher 3 en modifiant le JS du jeu.<br>- Ajout du tableau de scores, vous permettant de voir si vous avez progréssé ou pas.<br> - Ajout des skins. Permet donc de pimper son vaiseau avec des skins gagné avec de l\'expérience, des codes sur les canettes coca, dans les loot-boxes...<br>- Pour les joueurs Alpha, ajout du multijoueur. En test, avat le déploiment prévu le mois prochain.'
-      secondDivNews = document.createElement('div')
-      secondDivNews.classList.add('news1')
-      secondDivNews.classList.add('right')
-      secondImgNews = document.createElement('img')
-      secondImgNews.classList.add('newsImgRight')
-      secondImgNews.setAttribute('src','./images/news2.png')
-      firstImgNews.setAttribute('alt','Images des Nouveautées')
-      secondVersionNews = document.createElement('h2')
-      secondVersionNews.innerHTML='MAJ 2.0.5'
-      secondDate = document.createElement('h3')
-      secondDate.innerHTML='Mars 2018 :'
-      secondDetail = document.createElement('p')
-      secondDetail.innerHTML='- Ajout de serveurs suplémentaires.<br>- Changement au niveau du principe de dépenses de points. L\'ancien systéme est remplacé par une vrai monnaie : le Bitcoin.<br>- Diminution de de la vitesse de perte de points du Confort.<br>- Correction du bug qui affectait la valeur du nombre de colons qui une fois arrivé à 0, continuait de descendre en prenant des valeurs négatives.'
-      thirdDivNews = document.createElement('div')
-      thirdDivNews.classList.add('left')
-      thirdDivNews.classList.add('news1')
-      thirdImgNews = document.createElement('img')
-      thirdImgNews.classList.add('newsImgLeft')
-      thirdImgNews.setAttribute('src','./images/news3.png')
-      thirdImgNews.setAttribute('alt','Images des Nouveautées')
-      thirdVersionNews = document.createElement('h2')
-      thirdVersionNews.innerHTML='MAJ 2.0.4'
-      thirdDate = document.createElement('h3')
-      thirdDate.innerHTML='Fevrier 2018 :'
-      thirdDetail = document.createElement('p')
-      thirdDetail.innerHTML='- Correction de nombreux bugs.<br>- Correction de problémes de sauvegarde.<br>- Ajout des "événements": Systéme qui ajoute des choix à réaliser et qui ont de lourdes conséquences'
-      // injections des elements
-      body.appendChild(divNewsContainer)
-      divNewsContainer.appendChild(newsTitle)
-      divNewsContainer.appendChild(close)
-      divNewsContainer.appendChild(firstDivNews)
-      divNewsContainer.appendChild(secondDivNews)
-      divNewsContainer.appendChild(thirdDivNews)
-      firstDivNews.appendChild(firstImgNews)
-      firstDivNews.appendChild(firstVersionNews)
-      firstDivNews.appendChild(firstDate)
-      firstDivNews.appendChild(firstDetail)
-      secondDivNews.appendChild(secondImgNews)
-      secondDivNews.appendChild(secondVersionNews)
-      secondDivNews.appendChild(secondDate)
-      secondDivNews.appendChild(secondDetail)
-      thirdDivNews.appendChild(thirdImgNews)
-      thirdDivNews.appendChild(thirdVersionNews)
-      thirdDivNews.appendChild(thirdDate)
-      thirdDivNews.appendChild(thirdDetail)
-      // Evenement qui gere la fermeture du pop up
-      close.addEventListener(
-        'click',
-        function(){
-          // suppresion des elements
-          body.removeChild(divNewsContainer)
-          // remise a zero de l'opacitée
-          main.classList.remove('opacity')
-          nav.classList.remove('opacity')
-          // Remise a zero de la selection du bouton de nav
-          accueil.classList.add('selected')
-          nouveaute.classList.remove('selected')
-        }
-      )
-    }
-  )
+
+function yeartime(){
+year = document.querySelector("#yeartime")
+let yearCount = 0
+year.innerHTML = yearCount + " annnée(s)"
+setInterval(
+  () => {
+    yearCount += 1
+    year.innerHTML = yearCount + " ans"
+  }, 15000
+)
+}
+
+
+function chronoStart(){
+  document.chronoForm.startstop.value = "stop!"
+	document.chronoForm.startstop.onclick = chronoStop
+	document.chronoForm.reset.onclick = chronoReset
+	start = new Date()
+  chrono()
+  init()
+  yeartime()
+}
+
+function chronoContinue(){
+    document.chronoForm.startstop.value = "stop!"
+	document.chronoForm.startstop.onclick = chronoStop
+	document.chronoForm.reset.onclick = chronoReset
+	start = new Date()-diff
+	start = new Date(start)
+	chrono()
+}
+
+function chronoReset(){
+    document.getElementById("chronotime").innerHTML = "0:00:00:000"
+  start = new Date()
+  init()
+  yeartime()
+}
+
+function chronoStopReset(){
+    document.getElementById("chronotime").innerHTML = "0:00:00:000"
+	document.chronoForm.startstop.onclick = chronoStart
+}
+
+function chronoStop(){
+    document.chronoForm.startstop.value = "start!"
+	document.chronoForm.startstop.onclick = chronoContinue
+	document.chronoForm.reset.onclick = chronoStopReset
+	clearTimeout(timerID)
+}
+
+
+
+
+
+
+/******************************************
+ *                              
+ *           SLIDER BACKGROUND
+ * 
+ * ****************************************/
+let positionY = Math.ceil(Math.random() * 600)
+let speed = 1
+function increase() {
+
+    speed += 0.8
+    document.querySelector('.image').style.backgroundPosition = `${speed}px center`
+}
+function scrollImg() {
+    setInterval(increase, 10)
+}
+
+  window.addEventListener(
+      'load',
+      function () {
+          scrollImg()
+          univers()
+          setInterval(function () { speed = 1; univers() }, 9000)
+      }
+  )
+
+function univers() {
+  let current =   document.querySelector('.current');
+  if (current != null) {
+      current.classList.remove('current')
+      current.style.visibility = "hidden"
+  }
+
+  let choicePlanet = document.querySelectorAll(".planet")
+  for (let i = 0; i < choicePlanet.length; i++) {
+      let data = Math.ceil(Math.random() * 6)
+      if (data == 1) {
+          document.querySelector('.hearth').classList.add('current')
+      }
+      else if (data == 2) {
+          document.querySelector('.stone').classList.add('current')
+      }
+      else if (data == 3) {
+          document.querySelector('.moon').classList.add('current')
+      }
+      else if (data == 4) {
+          document.querySelector('.mars').classList.add('current')
+      }
+      else if (data == 5) {
+          document.querySelector('.pluton').classList.add('current')
+      }
+      else {
+          document.querySelector('.jupiter').classList.add('current')
+      }
+  }
 }

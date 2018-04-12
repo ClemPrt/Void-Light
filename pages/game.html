@@ -7,25 +7,38 @@
   <meta name="description" content="Description de ma page">
   <link rel="icon" type="image/png" href="../images/favicon.png" />
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <link rel="stylesheet" href="../styles/style2.css">
+  <link rel="stylesheet" href="../styles/gamestyle.css">
 </head>
 
-<body> 
-    <div class="image"> <!--background image-->
-    <div class="chrono"> <!--chrono-->
+<body onLoad="chronoStart()">
+  <div class="image">
+
+
+
+
+
+
+    <div class="chrono">
       <span id="chronotime">0:00:00:00</span>
-    <span id="yeartime"></span> <!--year time-->
-    <form name="chronoForm"> <!--button start and new party-->
+      <span id="yeartime"></span>
+      <form name="chronoForm">
         <input type="button" name="startstop" value="start!" onClick="chronoStart()" />
-        <input type="button" name="reset" value="Nouvelle partie" onClick="chronoReset()" />
+        <input type="button" name="reset" value="Rejouer!" onClick="chronoReset()" />
       </form>
     </div>
 
-    <p class="absolute"></p> <!--display "gagner" and "loose"-->
 
-    <div class="bitcoins_total"> <!--display bitcoins-->
+
+
+
+
+
+    <p class="absolute"></p>
+
+
+    <div class="bitcoins_total">
       <div class="bitcoins">
-        <svg class="animate" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <svg class="animate" id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <title>bitcoin</title>
           <path d="M88.11,107.68l-24-21.2a259,259,0,0,0-20.8,27l26.58,17.84A224.34,224.34,0,0,1,88.11,107.68Z" transform="translate(0 0)"
             style="fill:#77e86f" />
@@ -36,16 +49,17 @@
           <path d="M176,336v32h32v48h32V368h32v48h32V365.73A63.49,63.49,0,0,0,329.89,256,63.49,63.49,0,0,0,304,146.27V96H272v48H240V96H208v48H176v32h32V336Zm64-160h48a32,32,0,0,1,0,64H240Zm0,96h48a32,32,0,0,1,0,64H240Z"
             transform="translate(0 0)" style="fill:#77e86f" />
         </svg>
-    <p id="bitcoins"></p> <!--display bitcoins number-->
+        <p id="bitcoins"></p>
       </div>
       <div class="bitcoin_button_option">
-        <p class="changeBitcoinsComfort">5 bitcoins contre 10% de confort </p>
+        <p class="changeBitcoinsComfort">5 bitcoins contre 10 de confort</p>
       </div>
     </div>
 
-    <div class="top_menu"> <!--list icon ressources-->
+
+    <div class="top_menu">
       <div class="item">
-        <svg data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <title>000-astronaut</title>
           <path d="M457.63,275.45V183.19a19.32,19.32,0,0,0,7.07-14.66V131.21c0-23.05-21.23-41.86-47.59-42.48v-48c0-22.48-21-40.77-46.93-40.77H172c-42.5,0-77.07,30-77.07,67V88.73c-26.36.62-47.59,19.43-47.59,42.48v37.32a19.32,19.32,0,0,0,7,14.64v92.28C22,290.71,0,320.49,0,354.65V505.3C0,509,3.45,512,7.71,512H504.29c4.26,0,7.71-3,7.71-6.7V354.65C512,320.49,490,290.71,457.63,275.45Zm38.94,107.41H465.15V353.05h31.38C496.54,353.59,496.57,382.86,496.57,382.86Zm-54.36-113.3a117.32,117.32,0,0,0-33.86-5h-31c20.33-20.8,33.75-46.84,37.07-75.46,0,0,27.4,0,27.81-.05ZM256,50.23c79.29,0,143.8,56,143.8,124.94S335.28,300.12,256,300.12s-143.8-56-143.8-124.94S176.7,50.23,256,50.23ZM149.61,278c28.22,22.06,65.52,35.51,106.38,35.51S334.15,300.07,362.37,278h25.86c-33,33.24-81.34,52.73-132.23,52.73S156.71,311.24,123.74,278ZM116,290.59c34,32.19,81.72,51.59,132.3,53.39V498.6H116ZM263.71,344c50.57-1.8,98.28-21.2,132.3-53.41v208H263.71ZM449.28,131.21v37.32c0,4-3.73,7.21-8.3,7.21H415.2c0-.19,0-.38,0-.57,0-26.81-8.85-51.85-24.11-73.07h24.67C434.25,102.1,449.28,115.16,449.28,131.21ZM172,13.4H370.19c17.37,0,31.5,12.28,31.5,27.37V88.7H380.14c-29.21-31.59-74-51.87-124.15-51.87S161,57.11,131.84,88.7H110.36L110.31,67C110.31,37.43,138,13.4,172,13.4ZM62.72,131.21c0-16.05,15-29.11,33.5-29.11h24.66c-15.26,21.22-24.11,46.26-24.11,73.07,0,.19,0,.38,0,.57H71c-4.58,0-8.3-3.24-8.3-7.21V131.21Zm7,57.88c.42,0,27.82.06,27.82.06,3.32,28.61,16.74,54.66,37.07,75.46h-31a117.26,117.26,0,0,0-33.86,5ZM15.42,354.65c0-41.37,37.92-75.18,85.14-76.58V498.6H15.42Zm396,143.94V278.07c41.36,1.24,75.58,27.32,83.43,61.58H457.44c-4.26,0-7.71,3-7.71,6.7v43.21c0,3.7,3.45,6.7,7.71,6.7h39.13V498.6Z"
             style="fill:#77e86f" />
@@ -60,10 +74,10 @@
           <path d="M305.16,139.74c25.94,9.91,31.39,30.21,31.39,45.49,0,3.7,3.45,6.7,7.71,6.7h0c4.26,0,7.71-3,7.71-6.7,0-27.24-14.43-47.75-40.61-57.76-3.9-1.49-8.45,0-10.16,3.44S301.26,138.25,305.16,139.74Z"
             style="fill:#77e86f" />
         </svg>
-    <p id="population"></p> <!--display populations number-->
+        <p id="population"></p>
       </div>
       <div class="item">
-        <svg  data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 502 508.71">
+        <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 502 508.71">
           <title>0009-restaurant</title>
           <path d="M256.3,118.74c-83.56,0-151.53,68-151.53,151.53s68,151.53,151.53,151.53,151.53-68,151.53-151.53S339.86,118.74,256.3,118.74Zm0,283.07c-72.53,0-131.53-59-131.53-131.53s59-131.53,131.53-131.53,131.53,59,131.53,131.53S328.83,401.81,256.3,401.81Z"
             transform="translate(-3 -2.29)" style="fill:#77e86f" />
@@ -76,10 +90,10 @@
           <path d="M147.8,18.82c-6.44-.88-12.29,4.21-13.08,11.37L124,126.94c-1.66,15.08-12.62,26.45-26.17,27.37l-7.78-1.06L104.12,26c.79-7.16-3.79-13.68-10.22-14.56S81.6,15.68,80.81,22.84l-14,127.23L59,149c-13-4.54-21.1-18.53-19.44-33.6L50.22,18.66C51,11.5,46.43,5,40,4.1S27.7,8.31,26.91,15.47L16.24,112.22c-2.67,24.21,8.43,46.9,27.17,57.79L3.46,456v.1a49,49,0,0,0,7.92,34.2c6.73,9.83,16.51,16.07,27.53,17.58l.21,0a37.54,37.54,0,0,0,5.08.35,38,38,0,0,0,25.56-10.09,46.76,46.76,0,0,0,15-31.26l23.61-288c20.55-5.52,36.26-24.55,38.93-48.76L158,33.38C158.81,26.22,154.23,19.7,147.8,18.82ZM61.42,464.48A19.91,19.91,0,0,1,55,477.79a16,16,0,0,1-13,4.15l-.21,0a17,17,0,0,1-11.72-7.48,20.83,20.83,0,0,1-3.38-14.51L66.29,176.32l9.26,1.27h0l9.26,1.26Z"
             transform="translate(-3 -2.29)" style="fill:#77e86f" />
         </svg>
-    <p id="food"></p> <!--display food number-->
+        <p id="food"></p>
       </div>
       <div class="item">
-        <svg  data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 329.98 327.42">
+        <svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 329.98 327.42">
           <title>0008-clean</title>
           <path d="M175.43,1.28a7.5,7.5,0,0,0-6.18,3.26c-4.09,6-100.14,146.67-100.14,217.84a106.33,106.33,0,1,0,212.65,0c0-71.17-96.05-211.88-100.14-217.84a7.5,7.5,0,0,0-6.18-3.26Zm0,312.42A91.43,91.43,0,0,1,84.1,222.37C84.1,165.77,154,55,175.43,22.3,196.88,55,266.75,165.77,266.75,222.37A91.43,91.43,0,0,1,175.43,313.7Z"
             transform="translate(0 -1.28)" style="fill:#77e86f" />
@@ -93,7 +107,7 @@
         <p id="water"></p>
       </div>
       <div class="item">
-        <svg  data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <title>0100-oxygen-tank</title>
           <path d="M216.74,252.93a36.58,36.58,0,1,0,0,51.74A36.63,36.63,0,0,0,216.74,252.93Zm-14.11,37.63a16.63,16.63,0,1,1,0-23.52A16.65,16.65,0,0,1,202.63,290.56Z"
             transform="translate(0)" style="fill:#77e86f" />
@@ -102,10 +116,10 @@
           <path d="M501.29,29.53,482.47,10.71A36.32,36.32,0,0,0,456.61,0h-.25a36.33,36.33,0,0,0-26,11.06,23.27,23.27,0,0,0-1,31.08,20.65,20.65,0,0,0,3.73,22.63L419,78.91l-2.35-2.35a23.31,23.31,0,0,0-32.92,0l-6.57,6.57c-44.69-22.3-99.38-13.5-135.48,22.6L214.39,133h0L45.08,302.3h0l-18.8,18.8a89.9,89.9,0,0,0,0,127l37.63,37.63a89.9,89.9,0,0,0,127,0L407.22,269.39a116.33,116.33,0,0,0,18-141.44A10,10,0,0,0,408,138.1a96.38,96.38,0,0,1-14.89,117.18l-21.17,21.17-31-31a10,10,0,0,0-14.11,14.11l31,31L202.63,445.76l-31-31a10,10,0,1,0-14.11,14.11l31,31-11.76,11.76a69.84,69.84,0,0,1-98.77,0L40.37,434a69.83,69.83,0,0,1,0-98.77l11.76-11.76,49.38,49.38a10,10,0,0,0,14.11-14.11L66.24,309.37,221.44,154.16l49.38,49.38a10,10,0,0,0,14.11-14.11l-49.38-49.38,20.22-20.22C287,88.57,335,81.93,372.87,103.48l11.29,11.23a10,10,0,0,0,14.07-14.15l-5.17-5.14,4.75-4.75a3.33,3.33,0,0,1,4.7,0l18.81,18.81a3.3,3.3,0,0,1,1,2.61,10,10,0,0,0,19.89,1.53A23.24,23.24,0,0,0,440,101.77l10.77,10.77-2.35,2.35A10,10,0,0,0,462.48,129l18.81-18.81a10,10,0,0,0-14.11-14.11l-2.35,2.35L446.26,79.86l1-1a20.66,20.66,0,0,0,22.64,3.74,23.34,23.34,0,0,0,15,5.46,22.92,22.92,0,0,0,16.05-6.48,36.59,36.59,0,0,0,.35-52.09ZM487,67.32a3.25,3.25,0,0,1-4.54-.16l-2.82-2.82a12.64,12.64,0,0,0-17.86,0l1.87-1.87L449.55,48.34l-1.87,1.87a12.64,12.64,0,0,0,0-17.86l-2.82-2.82a3.25,3.25,0,0,1-.16-4.54,16.52,16.52,0,0,1,11.81-5h.11a16.51,16.51,0,0,1,11.75,4.87l18.81,18.81A16.63,16.63,0,0,1,487,67.32Z"
             transform="translate(0)" style="fill:#77e86f" />
         </svg>
-    <p id="oxygen"></p> <!--display oxygen number-->
+        <p id="oxygen"></p>
       </div>
       <div class="item">
-        <svg  data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 508.05">
+        <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 508.05">
           <title>0003-plug</title>
           <path d="M112,401.39a42.4,42.4,0,0,0-48.9-8C6,312.57,5.83,201.74,63.6,120.67a10,10,0,0,0-16.29-11.61,256.18,256.18,0,0,0,.49,297.35,42.37,42.37,0,1,0,64.21-5ZM97.87,447.17a22.37,22.37,0,1,1,0-31.63A22.39,22.39,0,0,1,97.87,447.17Z"
             transform="translate(0 -1.98)" style="fill:#77e86f" />
@@ -120,10 +134,10 @@
           <path d="M278.55,263.7a10,10,0,0,0-8.64-5h-7.15l13.16-16.63a10,10,0,0,0-15.68-12.41l-26,32.83a10,10,0,0,0,7.84,16.21h10.66l-12.25,21.62a10,10,0,1,0,17.4,9.86l20.7-36.55A10,10,0,0,0,278.55,263.7Z"
             transform="translate(0 -1.98)" style="fill:#77e86f" />
         </svg>
-    <p id="energy"></p> <!--display energy number-->
+        <p id="energy"></p>
       </div>
       <div class="item">
-        <svg  data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 479.99 477.99">
+        <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 479.99 477.99">
           <title>0001-bathtub</title>
           <rect x="176" y="72.15" width="16" height="18.04" style="fill:#77e86f" />
           <rect x="144" y="72.15" width="16" height="18.04" style="fill:#77e86f" />
@@ -134,10 +148,10 @@
           <path d="M0,243.51c0,11.42,6.45,21.59,16,25.4v73.81c.06,37.84,23.28,70.63,56,79.08V469c0,5,3.58,9,8,9h32c4.42,0,8-4,8-9V423.88H360V469c0,5,3.58,9,8,9h32c4.42,0,8-4,8-9V421.79c32.72-8.44,55.94-41.23,56-79.08V268.9c9.6-3.81,16-14,16-25.51,0-14.91-10.77-27-24-26.94H48V18h96v18H112v18h80v-18H160V9c0-5-3.58-9-8-9H40c-4.42,0-8,4-8,9V216.45H24C10.74,216.45,0,228.56,0,243.51Zm408,54.11H312V234.49h96Zm0,36.08H312v-18h96Zm48-81.17H424v-18h32c4.42,0,8,4,8,9S460.42,252.53,456,252.53ZM376,423.88h16V460H376Zm-288,0h16V460H88ZM32,270.56H296v72.15c0,5,3.58,9,8,9H416c4.42,0,8-4,8-9V270.56h24v72.15c0,34.85-25.09,63.09-56,63.13H88c-30.91,0-56-28.28-56-63.13ZM16,243.51c0-5,3.58-9,8-9H296v18H24C19.58,252.53,16,248.49,16,243.51Z"
             transform="translate(0)" style="fill:#77e86f" />
         </svg>
-    <p id="hygiene"></p> <!--display hygiene number-->
+        <p id="hygiene"></p>
       </div>
       <div class="item">
-        <svg  data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
+        <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480">
           <title>0002-bed</title>
           <path d="M479.74,398,408,119V8a8,8,0,0,0-8-8H80a8,8,0,0,0-8,8V119L.26,398A8,8,0,0,0,0,400v72a8,8,0,0,0,8,8H472a8,8,0,0,0,8-8V400A8,8,0,0,0,479.74,398ZM88,16H392v96H376V80a8,8,0,0,0-8-8H256a8,8,0,0,0-8,8v32H232V80a8,8,0,0,0-8-8H112a8,8,0,0,0-8,8v32H88ZM360,88v56H264V88ZM216,88v56H120V88ZM86.2,128H104v24a8,8,0,0,0,8,8H224a8,8,0,0,0,8-8V128h16v24a8,8,0,0,0,8,8H368a8,8,0,0,0,8-8V128h17.8l16.46,64H69.74ZM65.6,208H414.4l4.11,16h-357ZM464,464H16V401L57.4,240H422.6L464,401Z"
             style="fill:#77e86f" />
@@ -145,10 +159,10 @@
           <rect x="232" y="392" width="16" height="16" style="fill:#77e86f" />
           <rect x="32" y="392" width="184" height="16" style="fill:#77e86f" />
         </svg>
-    <p id="comfort"></p> <!--display comfort number-->  
+        <p id="comfort"></p>
       </div>
       <div class="item">
-        <svg  data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 567.27 567.42">
+        <svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 567.27 567.42">
           <title>0007-happy</title>
           <g id="group-2svg">
             <path id="path-1" d="M409.93,209.3a32.68,32.68,0,1,1-32.68-32.68A32.68,32.68,0,0,1,409.93,209.3Z" transform="translate(-0.07)"
@@ -161,49 +175,44 @@
               transform="translate(-0.07)" style="fill:#77e86f" />
           </g>
         </svg>
-    <p id="humor"></p> <!--display humor number-->
+        <p id="humor"></p>
       </div>
     </div>
-
 
 
     <div class="clearBoth"></div>
 
-
-
-    <div id="slider"> <!--building slider-->
+    <div id="slider">
       <div class="primarySlide">
-    <img class="size_slide" src="../images/food.png" alt="Texte alternatif"> <!--big img slider-->
+        <img class="size_slide" src="../images/food.png" alt="Texte alternatif">
         <h2>Salle d'agriculture</h2>
       </div>
       <ul class="slides">
-        <li>
-    <img class="eventFood" src="../images/food_mini.png" alt="Salle d'agriculture" data-srcBigImg="images/food.png"> <!--mini img slider food-->
+        <li class="t">
+          <img class="eventFood" src="../images/food_mini.png" alt="Salle d'agriculture" data-srcBigImg="images/food.png">
         </li>
         <li>
-    <img class="eventWater" src="../images/water_mini.png" alt="Salle d'eau" data-srcBigImg="images/water.png"> <!--mini img slider water-->
+          <img class="eventWater" src="../images/water_mini.png" alt="Salle d'eau" data-srcBigImg="images/water.png">
         </li>
         <li>
-    <img class="eventOxygen" src="../images/oxygen_mini.png" alt="Salle d'Oxygene" data-srcBigImg="images/oxygen.png"> <!--mini img slider oxygen-->
+          <img class="eventOxygen" src="../images/oxygen_mini.png" alt="Salle d'Oxygen" data-srcBigImg="images/oxygen.png">
         </li>
         <li>
-      <img class="eventComfort" src="../images/comfort_mini.png" alt="Salle de confort" data-srcBigImg="images/comfort.png"> <!--mini img slider comfort-->
+          <img class="eventComfort" src="../images/comfort_mini.png" alt="Salle de confort" data-srcBigImg="images/comfort.png">
         </li>
         <li>
-    <img class="eventEnergy" src="../images/energy_mini.png" alt="Salle d'energie" data-srcBigImg="images/energy.png"> <!--mini img slider energy-->
+          <img class="eventEnergy" src="../images/energy_mini.png" alt="Salle d'energie" data-srcBigImg="images/energy.png">
         </li>
         <li>
-    <img class="eventHygiene" src="../images/hygiene_mini.png" alt="Salle d'hygiène" data-srcBigImg="images/hygiene.png"> <!--mini img slider hygiene-->
+          <img class="eventHygiene" src="../images/hygiene_mini.png" alt="Salle d'hygiène" data-srcBigImg="images/hygiene.png">
         </li>
       </ul>
     </div>
 
-
-
-    <div class="cards"> <!--display cards-->
+    <div class="cards">
       <p class="cards_info">Ajouter 30% pour 5 bitcoins</p>
-    <div class="moreFood animate"> <!--cards food + animation-->
-        <svg data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 672 852">
+      <div class="moreFood animate">
+        <svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 672 852">
           <title>food</title>
           <rect x="10" y="10" width="652" height="832" rx="70.82" ry="70.82" style="fill:none;stroke:#77e86f;stroke-miterlimit:10;stroke-width:20px"
           />
@@ -221,8 +230,8 @@
             transform="translate(-346.5 41.5)" style="fill:#77e86f" />
         </svg>
       </div>
-    <div class="moreWater animate"> <!--cards water + animation-->
-        <svg data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 672 852">
+      <div class="moreWater animate">
+        <svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 672 852">
           <title>water</title>
           <rect x="10" y="10" width="652" height="832" rx="70.82" ry="70.82" style="fill:none;stroke:#77e86f;stroke-miterlimit:10;stroke-width:20px"
           />
@@ -238,8 +247,8 @@
             transform="translate(-346.5 41.5)" style="fill:#77e86f" />
         </svg>
       </div>
-    <div class="moreOxygen animate"> <!--cards oxygen + animation-->
-        <svg data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 672 852">
+      <div class="moreOxygen animate">
+        <svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 672 852">
           <title>O2</title>
           <rect x="10" y="10" width="652" height="832" rx="70.82" ry="70.82" style="fill:none;stroke:#77e86f;stroke-miterlimit:10;stroke-width:20px"
           />
@@ -253,8 +262,8 @@
             transform="translate(-346.5 41.5)" style="fill:#77e86f" />
         </svg>
       </div>
-    <div class="moreEnergy animate"> <!--cards energy + animation-->
-        <svg data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 672 852">
+      <div class="moreEnergy animate">
+        <svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 672 852">
           <title>energy</title>
           <rect x="10" y="10" width="652" height="832" rx="70.82" ry="70.82" style="fill:none;stroke:#77e86f;stroke-miterlimit:10;stroke-width:20px"
           />
@@ -274,8 +283,8 @@
             transform="translate(-346.5 41.5)" style="fill:#77e86f" />
         </svg>
       </div>
-    <div class="moreHygiene animate"> <!--cards hygiene + animation-->
-        <svg data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 672 852">
+      <div class="moreHygiene animate">
+        <svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 672 852">
           <title>bathroom</title>
           <rect x="10" y="10" width="652" height="832" rx="70.82" ry="70.82" style="fill:none;stroke:#77e86f;stroke-miterlimit:10;stroke-width:20px"
           />
@@ -295,50 +304,50 @@
 
 
 
-    <div class="event"><!--event-->
+    <div class="event">
       <div class="eventCard">
-    <div class="eventCardMusk"><!--event begin musk-->
+        <div class="eventCardMusk">
           <img class="persoCardCenter" src="../images/persoElonMusk.png" alt="">
           <p>Elon Musk : Terre à Agatha ! Terre à Agatha ! Vous me recevez Agatha ? </p>
           <p>Vous : Je vous reçois 5 sur 5 Monsieur Musk ! Nous avons franchi la stratosphère sans problème.</p>
           <p>Elon Musk : Parfait ! Cette mission de colonisation est extremement importante pour l'avenir de l'Humanité. Vous
             devez faire en sorte que ces colons arrivent sans peine sur Mars. Je compte sur vous !</p>
-          <p class="answerReady" onClick="chronoStart()">Je suis prêt !</p>
+          <p class="answerReady">Je suis prêt !</p>
         </div>
-    <div class="eventCardFood1"><!--event food-->
+        <div class="eventCardFood1">
           <img class="persoCardCenter" src="../images/persoSerre.png" alt="">
           <p>Des colons ont volé de la nourriture dans la serre ! Nous devons démasquer les coupables !</p>
           <p class="answerYesFood1">Organiser une enquête</p>
           <p class="answerNoFood1">Il n’y a pas de mal…</p>
         </div>
-    <div class="eventCardWater1"><!--event water-->
+        <div class="eventCardWater1">
           <img class="persoCardCenter" src="../images/PersoReacteur.png" alt="">
           <p> Il y a une fuite dans la citerne ! Il faut réquisitionner les colons pour la réparer ou on ne pourra plus fournir
             tout le monde !</p>
           <p class="answerYesWater1">Oui</p>
           <p class="answerNoWater1">Non</p>
         </div>
-    <div class="eventCardOxygen1"><!--event oxygen-->
+        <div class="eventCardOxygen1">
           <img class="persoCardCenter" src="../images/persoOxygen.png" alt="">
           <p> Un problème technique compromet la distribution d’oxygène dans les quartiers des colons ! Nous devrons les évacuer
             vers le pont principal et couper l’oxygène de leurs quartiers si nous ne réparons pas rapidement !</p>
           <p class="answerYesOxygen1">Réparer !</p>
           <p class="answerNoOxygen1">Évacuer !</p>
         </div>
-    <div class="eventCardComfort1"><!--event comfort-->
+        <div class="eventCardComfort1">
           <img class="persoCardCenter" src="../images/persoComfort.png" alt="">
           <p> Les colons ont détérioré le matériel de la salle de repos. Ils exigent que vous le remplaciez.</p>
           <p class="answerYesComfort1">Très bien…</p>
           <p class="answerNoComfort1">Tant pis pour eux</p>
         </div>
-    <div class="eventCardEnergy1"><!--event energy-->
+        <div class="eventCardEnergy1">
           <img class="persoCardCenter" src="../images/persoReacteur.png" alt="">
           <p> Un incendie s’est déclaré au niveau du Life Support System ! Il faudrait l’éteindre au plus vite mais nous pourrions
             aussi essayer de convertir la chaleur en énergie.</p>
           <p class="answerYesEnergy1">Oui !</p>
           <p class="answerNoEnergy1">Non !</p>
         </div>
-    <div class="eventCardHygiene1"><!--event hygiene-->
+        <div class="eventCardHygiene1">
           <img class="persoCardCenter" src="../images/persoHygiene.png" alt="">
           <p> Les colons se plaignent que les douches sont trop petites !</p>
           <p class="answerYesHygiene1">Les agrandirs !</p>
@@ -347,7 +356,12 @@
       </div>
     </div>
   </div>
-    <p class="version">V.1.0.0</p><!--display game version-->
-    <script src="../scripts/app2.js"></script>
+
+
+
+
+  <p class="version">V.1.0.0</p>
+
 </body>
+<script type="text/javascript" src="../scripts/app.js"></script>
 </html>

@@ -1,6 +1,8 @@
 @font-face {
-  font-family: 'moonhouse';
-  src: url(../fonts/moonhouse.ttf);
+  font-family: 'moonhouseregular';
+  src: url('../fonts/moonhouse-webfont.woff2') format('woff2'), url('../fonts/moonhouse-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 html {
@@ -10,6 +12,7 @@ html {
 
 .image {
   background: url('../images/etoiles.jpg') -1px center/cover repeat-x;
+  overflow: hidden;
   height: 810px;
   width: 100%;
   z-index: 200;
@@ -18,6 +21,7 @@ html {
 body {
   margin: 0;
   position: relative;
+  overflow: hidden;
 }
 
 .clearBoth {
@@ -43,7 +47,7 @@ p.absolute {
   left: 500px;
   color: #e86f6f;
   font-size: 10em;
-  font-family: 'moonhouse';
+  font-family: 'moonhouseregular';
 }
 
 h2 {
