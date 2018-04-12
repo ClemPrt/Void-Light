@@ -574,6 +574,7 @@ function myRandom(){
   let end = 0
   let diff = 0
   let timerID = 0
+  
 function chrono(){
     end = new Date()
 	diff = end - start
