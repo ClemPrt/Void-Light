@@ -128,11 +128,11 @@ h2 {
 .slides li {
   display: inline-block;
   margin: 20px 20px 0px 20px;
-  cursor: pointer;
 }
 
 .slides li img {
   border: 3px solid white;
+  cursor: pointer;
 }
 
 .size_slide {
@@ -204,7 +204,7 @@ h2 {
 .eventCard {
   position: absolute;
   width: 360px;
-  top: 150px;
+  top: 125px;
   right: 50px;
 }
 
