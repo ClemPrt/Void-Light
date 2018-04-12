@@ -1,7 +1,31 @@
+@font-face {
+    font-family: 'moonhouseregular';
+    src: url('../moonhouse-webfont.woff2') format('woff2'),
+         url('../moonhouse-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html{
+  font-size: 62.5%;
+  user-select: none;
+}
+
+.image{
+  background: url('../images/etoiles.jpg') -1px center/cover repeat-x ;
+  overflow: hidden;
+  height: 810px;
+  width: 100%;
+  index: 200;
+
+}
+
+
 body{
   margin: 0;
-  background: url("../images/etoiles.jpg") no-repeat;
-  background-size: cover; }
+  position: relative;
+  overflow: hidden;
+
 }
 
 .clearBoth{
@@ -17,7 +41,56 @@ svg{
 p{
   text-align: center;
   color: #77e86f;
+  font-size: 1.5em;
+  font-family: 'Roboto', sans-serif;
 }
+
+p.absolute{
+  position: absolute;
+  top: 250px;
+  left: 500px;
+  color:#e86f6f;
+  font-size: 10em;
+  font-family: 'moonhouseregular';
+}
+
+h2{
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.1em;
+  text-align: center;
+}
+
+
+
+#slider{
+  width: 960px;
+  margin: 0 auto;
+}
+
+.slides{
+  list-style: none;
+  text-align: center;
+  padding: 0;
+}
+
+.slides li{
+  display: inline-block;
+  margin: 20px 20px 0px 20px;
+}
+
+.slides li img{
+  border: 3px solid white;
+}
+
+.size_slide{
+  width: 500px;
+  display: block;
+  margin: 0 auto;
+}
+
+
 
 
 
@@ -36,24 +109,102 @@ p{
 }
 
 .shipou{
-  width: 400px;
+  width: 200px;
   display: block;
   margin: 0 auto;
-  transform: rotate(90deg);
 }
 
 .cards svg{
   float: left;
   width: 70px;
-  margin-top: 93px;
   padding: 0 30px;
 }
 
   .cards{
-  width: 800px;
+  width: 650px;
   margin: 0 auto;
+  cursor: pointer;
+}
+
+.cards_info{
+  margin-top: 70px;
 }
 
 .choice{
   background-color: red;
+}
+
+.bitcoins_total{
+  cursor: pointer;
+}
+
+.bitcoins{
+  position: absolute;
+  top: 300px;
+  left: 30px;
+  }
+
+.bitcoin_button_option{
+  position: absolute;
+  top: 300px;
+  left: 100px;
+  color: white;
+}
+
+
+.eventCard{
+  position: absolute;
+  width: 360px;
+  top: 150px;
+  right: 50px;
+}
+
+.eventCardFood1, .eventCardWater1, .eventCardOxygen1, .eventCardComfort1, .eventCardEnergy1, .eventCardHygiene1{
+  display: none;
+}
+
+
+.answerYesFood1, .answerNoFood1, .answerYesWater1, .answerNoWater1, .answerYesOxygen1, .answerNoOxygen1, .answerYesComfort1, .answerNoComfort1, .answerYesEnergy1, .answerNoEnergy1, .answerYesHygiene1, .answerNoHygiene1{
+  cursor: pointer;
+}
+
+.chrono{
+  color: white;
+  font-size: 2em;
+  font-family: "Roboto";
+  position: absolute;
+  top: 30px;
+  left: 50px;
+}
+
+input{
+  border: 1px solid white;
+  background: rgba(255, 255, 255, 0);
+  color: white;
+}
+
+.version{
+  position: absolute;
+  top: 0px;
+  right: 10px;
+}
+
+
+
+
+.planet{
+  image: -1px center/cover repeat-x ;
+  index: 100;
+  position: absolute;
+  transform: translateX(-250px);
+}
+
+.hearth, .stone, .moon, .mars, .pluton, .jupiter{
+  visibility: hidden;
+  left: -70px;
+  position: absolute;
+}
+.jupiter, .mars, .pluton{
+  margin-left: -80px;
+  position: absolute;
 }
