@@ -1,10 +1,9 @@
-let population, food, water, energy, hygiene, oxygen, comfort, humor,
+let population, food, water, energy, hygiene, oxygen, comfort, humor, name,
 min, medium, max, bitcoins, changeBitcoinsComfort, animate,perso, moreFood,
 moreComfort, moreEnergy, moreHygiene, moreOxygen, moreWater,
   eventCardFood1, eventCardComfort1, eventCardOxygen1, eventCardWater1, eventCardHygiene1,
 eventFood, eventWater, eventOxygen, eventEnergy, eventHygiene, answerYesFood1, answerNoFood1, answerYesWater1, answerNoWater1,
   answerYesComfort1, answerNoComfort1, answerYesOxygen1, answerNoOxygen1, answerYesEnergy1, answerNoEnergy1, answerYesHygiene1, answerNoHygiene1
-
 
 
 
@@ -75,7 +74,7 @@ let timer = setInterval(
 let timer_event = setInterval(
   function(){
     myRandom()
-  }, 20000
+  }, 10000
 )
 
 
@@ -106,7 +105,7 @@ function myPopulation() {
 }
 
 function myFood() {
-  document.querySelector('#food').innerHTML = (Math.floor(food -= (population/1.5) / 100)+"%")
+  document.querySelector('#food').innerHTML = (Math.floor(food -= (population/2.5) / 100)+"%")
 
   if ((food) < 1){
     food = 0
@@ -116,7 +115,7 @@ function myFood() {
 }
 
 function myWater() {
-  document.querySelector('#water').innerHTML = (Math.floor(water -= population / 100) + "%")
+  document.querySelector('#water').innerHTML = (Math.floor(water -= (population/2.5) / 100) + "%")
 
   if ((water) < 1){
     water = 0
@@ -144,6 +143,8 @@ function myHumor() {
     humor += 0.1
   } else if ((food || water || oxygen || hygiene) < 50){
     humor -= 0.5
+  } else if ((food || water || oxygen || hygiene) < 25) {
+    humor -= 10
   }
 }
 
@@ -273,11 +274,6 @@ for (let i = 0; i < thumbnail.length; i++) {
       bigImg.setAttribute('alt', altTxt)
       bigImg.setAttribute('src', srcBigImg)
       title.innerHTML = altTxt
-      //enlever la classe current à l'élement en cours
-      let actualCurrent = document.querySelector('.slides .current')
-      actualCurrent.classList.remove('current')
-      //ajouter la classe current à l'élement en cours
-      this.parentNode.classList.add('current')
     }
   )
 }
@@ -290,7 +286,7 @@ function loose(){
 
 
 function myRandom(){
-    let number = Math.floor(Math.random() * 20)
+    let number = Math.floor(Math.random() * 2)
     if (number === 1) {
      // let number2 = Math.floor(Math.random() * 2)
       eventFood.style.border = "3px solid red"
@@ -299,6 +295,7 @@ function myRandom(){
         function(){
           eventFood.style.border = "3px solid white"
           eventCardFood1.style.display = "block"
+          myRandom()
         }
       )
 
@@ -325,6 +322,7 @@ function myRandom(){
         function () {
           eventWater.style.border = "3px solid white"
           eventCardWater1.style.display = "block"
+          number === 0
         }
       )
 
@@ -351,6 +349,7 @@ function myRandom(){
         function () {
           eventOxygen.style.border = "3px solid white"
           eventCardOxygen1.style.display = "block"
+          number === 0
         }
       )
 
@@ -376,8 +375,9 @@ function myRandom(){
       eventComfort.addEventListener(
         "click",
         function () {
-          eventComfort.style.border = "none"
+          eventComfort.style.border = "3px solid white"
           eventCardComfort1.style.display = "block"
+          number === 0
         }
       )
 
@@ -404,8 +404,9 @@ function myRandom(){
       eventEnergy.addEventListener(
         "click",
         function () {
-          eventEnergy.style.border = "none"
+          eventEnergy.style.border = "3px solid white"
           eventCardEnergy1.style.display = "block"
+          number === 0
         }
       )
 
@@ -430,8 +431,9 @@ function myRandom(){
       eventHygiene.addEventListener(
         "click",
         function () {
-          eventHygiene.style.border = "none"
+          eventHygiene.style.border = "3px solid white"
           eventCardHygiene1.style.display = "block"
+          number === 0
         }
       )
 
@@ -456,6 +458,9 @@ function myRandom(){
     }
 
   }
+
+
+  
 
 
 
@@ -531,7 +536,7 @@ let positionY = Math.ceil(Math.random() * 600)
 let speed = 1
 function increase() {
 
-    speed += 1.5
+    speed += 0.8
     document.querySelector('.image').style.backgroundPosition = `${speed}px center`
     document.querySelector('.current').style.transform = `translateX(${speed}px)`
     document.querySelector('.current').style.visibility = "visible"
